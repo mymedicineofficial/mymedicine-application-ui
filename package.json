@@ -1,0 +1,13 @@
+{
+  "name": "mymed-bridge-api",
+  "version": "1.0.0",
+  "description": "GitHub to App UI Bridge",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.2"
+  }
+}
