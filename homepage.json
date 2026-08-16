@@ -1,30 +1,99 @@
-{  "screenName": "Home",
-  "backgroundColor": "#000000",
+{
+  "screenName": "Home",
+  "backgroundColor": "#0B0F14",
+  "refreshIntervalSeconds": 120,
+  "theme": {
+    "primary": "#10B981",
+    "background": "#0B0F14",
+    "surface": "#151B23",
+    "border": "#232B35",
+    "textPrimary": "#FFFFFF",
+    "textSecondary": "#9CA3AF",
+    "richRed": "#991B1B",
+    "yellow": "#F5C542",
+    "iconBg": "#0F2E28"
+  },
   "sections": [
     { "type": "welcome_header" },
-    { "type": "search_bar" },
+    { "type": "search_bar", "properties": { "placeholder": "Search medicines, doctors..." } },
+
     {
       "type": "category_grid",
       "children": [
-        { "type": "cat_item", "properties": { "title": "Find Doctor", "icon": "SEARCH", "color": "colorPrimary", "action": "nav:doctors" } },
+        { "type": "cat_item", "properties": { "title": "Find Doctor", "icon": "SEARCH", "action": "nav:doctors" } },
         { "type": "ai_card" },
         { "type": "medmates_card" },
-        { "type": "cat_item", "properties": { "title": "Health Hub", "icon": "CALENDAR", "color": "colorYellow", "action": "nav:health_hub" } }
+        { "type": "cat_item", "properties": { "title": "Health Hub", "icon": "CALENDAR", "action": "nav:health_hub" } }
       ]
     },
-    { "type": "sos_banner" },
+
+    { "type": "sos_banner", "properties": { "phone": "112" } },
+
     { "type": "section_header", "properties": { "title": "Health Articles", "showViewAll": true }, "action": "nav:health_hub" },
-    { "type": "article_block" },
+    { "type": "native_articles" },
+
     { "type": "section_header", "properties": { "title": "Upcoming Appointments", "showViewAll": true }, "action": "nav:appointments" },
-    { "type": "appointment_block" },
+    { "type": "native_appointments" },
+
     { "type": "section_header", "properties": { "title": "Upcoming Medicine" } },
-    { "type": "medicine_card" },
+    { "type": "native_medicines" },
+
     { "type": "section_header", "properties": { "title": "Special Offers" } },
-    { "type": "banner_slider" },
+    {
+      "type": "banner_slider",
+      "children": [
+        {
+          "type": "banner_item",
+          "properties": {
+            "title": "20% Off on First Order",
+            "subtitle": "Use code WELCOME20",
+            "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800"
+          },
+          "action": "nav:health_hub"
+        },
+        {
+          "type": "banner_item",
+          "properties": {
+            "title": "Free Home Delivery",
+            "subtitle": "On orders above \u20b9499",
+            "imageUrl": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800"
+          },
+          "action": "nav:health_hub"
+        },
+        {
+          "type": "banner_item",
+          "properties": {
+            "title": "Lab Tests at Home",
+            "subtitle": "Book a slot in 2 minutes",
+            "imageUrl": "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800"
+          },
+          "action": "nav:appointments"
+        }
+      ]
+    },
+
     { "type": "section_header", "properties": { "title": "Popular Specialties", "showViewAll": true }, "action": "nav:doctors" },
-    { "type": "specialty_scroller" },
+    {
+      "type": "specialty_scroller",
+      "children": [
+        { "type": "spec_item", "properties": { "title": "Cardiologist", "icon": "ABOUT" }, "action": "nav:doctors" },
+        { "type": "spec_item", "properties": { "title": "Dermatologist", "icon": "ABOUT" }, "action": "nav:doctors" },
+        { "type": "spec_item", "properties": { "title": "Pediatrician", "icon": "ABOUT" }, "action": "nav:doctors" },
+        { "type": "spec_item", "properties": { "title": "Orthopedic", "icon": "ABOUT" }, "action": "nav:doctors" },
+        { "type": "spec_item", "properties": { "title": "Dentist", "icon": "ABOUT" }, "action": "nav:doctors" },
+        { "type": "spec_item", "properties": { "title": "ENT", "icon": "ABOUT" }, "action": "nav:doctors" }
+      ]
+    },
+
     { "type": "section_header", "properties": { "title": "Daily Health Tip" } },
-    { "type": "health_tip", "properties": { "title": "Stay Hydrated!", "desc": "Drink at least 8 glasses of water daily." } },
+    {
+      "type": "health_tip",
+      "properties": {
+        "title": "Stay Hydrated!",
+        "desc": "Drink at least 8 glasses of water daily."
+      }
+    },
+
     { "type": "footer", "properties": { "text": "Designed for your health\nMy Medecine v3.0" } }
   ]
 }
