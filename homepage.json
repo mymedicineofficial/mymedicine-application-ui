@@ -1,36 +1,134 @@
-
 {
-  "screenName": "Home",
-  "backgroundColor": "#000000",
+  "screenName": "Home","backgroundColor": "#000000",
   "sections": [
     {
-      "type": "text",
-      "properties": { "text": "Hello User,", "size": 14, "bold": false, "margin": 20 }
+      "type": "welcome_header",
+      "properties": {
+        "userName": "Ashif"
+      }
     },
     {
-      "type": "text",
-      "properties": { "text": "Your Health Center", "size": 26, "bold": true, "margin": 20 }
+      "type": "search_bar"
     },
     {
-      "type": "banner_slider",
+      "type": "category_grid",
       "children": [
         {
-          "type": "banner_item",
+          "type": "category_item",
           "properties": {
-            "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500",
+            "title": "Find Doctor",
+            "icon": "SEARCH",
             "action": "nav:doctors"
+          }
+        },
+        {
+          "type": "category_item",
+          "properties": {
+            "title": "mymed AI",
+            "icon": "AI",
+            "action": "nav:ai"
+          }
+        },
+        {
+          "type": "category_item",
+          "properties": {
+            "title": "Medmates",
+            "icon": "CHAT",
+            "action": "nav:chat"
+          }
+        },
+        {
+          "type": "category_item",
+          "properties": {
+            "title": "Health Hub",
+            "icon": "CALENDAR",
+            "action": "nav:health_hub"
           }
         }
       ]
     },
     {
-      "type": "category_grid",
+      "type": "sos_banner"
+    },
+    {
+      "type": "section_header",
+      "properties": {
+        "title": "HEALTH ARTICLES",
+        "showViewAll": true
+      },
+      "action": "nav:health_hub"
+    },
+    {
+      "type": "health_tip",
+      "properties": {
+        "title": "Latest Health News",
+        "desc": "Join expert-led health discussions in our community."
+      },
+      "action": "nav:health_hub"
+    },
+    {
+      "type": "section_header",
+      "properties": {
+        "title": "POPULAR SPECIALTIES",
+        "showViewAll": true
+      },
+      "action": "nav:doctors"
+    },
+    {
+      "type": "specialty_scroller",
       "children": [
-        { "type": "cat", "properties": { "title": "Doctors", "icon": "DOCTOR", "action": "nav:doctors" } },
-        { "type": "cat", "properties": { "title": "MedAI", "icon": "AI", "action": "nav:ai" } },
-        { "type": "cat", "properties": { "title": "Chat", "icon": "CHAT", "action": "nav:chat" } },
-        { "type": "cat", "properties": { "title": "Emergency", "icon": "EMERGENCY", "action": "nav:emergency" } }
+        {
+          "type": "spec",
+          "properties": {
+            "title": "Heart",
+            "imageUrl": "https://img.icons8.com/color/96/heart-with-pulse.png"
+          },
+          "action": "nav:doctors"
+        },
+        {
+          "type": "spec",
+          "properties": {
+            "title": "Eyes",
+            "imageUrl": "https://img.icons8.com/color/96/eye.png"
+          },
+          "action": "nav:doctors"
+        },
+        {
+          "type": "spec",
+          "properties": {
+            "title": "Dentist",
+            "imageUrl": "https://img.icons8.com/color/96/tooth.png"
+          },
+          "action": "nav:doctors"
+        },
+        {
+          "type": "spec",
+          "properties": {
+            "title": "Lungs",
+            "imageUrl": "https://img.icons8.com/color/96/lungs.png"
+          },
+          "action": "nav:doctors"
+        }
       ]
+    },
+    {
+      "type": "section_header",
+      "properties": {
+        "title": "DAILY HEALTH TIP"
+      }
+    },
+    {
+      "type": "health_tip",
+      "properties": {
+        "title": "Stay Hydrated!",
+        "desc": "Drink at least 8 glasses of water daily to keep your skin and body healthy."
+      }
+    },
+    {
+      "type": "footer",
+      "properties": {
+        "text": "Made with ❤️ for your health\nMy Medecine v3.0"
+      }
     }
   ]
 }
