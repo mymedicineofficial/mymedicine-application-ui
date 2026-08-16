@@ -1,13 +1,18 @@
 {
   "name": "mymed-bridge-api",
-  "version": "1.0.0",
-  "description": "GitHub to App UI Bridge",
+  "version": "2.0.0",
+  "description": "Server-driven UI bridge for the My Medecine app: serves the Home screen layout (content, order, theme) from a GitHub-hosted JSON file, with in-memory caching, ETag/304 support and stale-fallback resilience.",
   "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "axios": "^1.6.2"
+    "axios": "^1.6.2",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
   }
 }
