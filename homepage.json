@@ -1,134 +1,30 @@
-{
-  "screenName": "Home","backgroundColor": "#000000",
+{  "screenName": "Home",
+  "backgroundColor": "#000000",
   "sections": [
-    {
-      "type": "welcome_header",
-      "properties": {
-        "userName": "Ashif"
-      }
-    },
-    {
-      "type": "search_bar"
-    },
+    { "type": "welcome_header" },
+    { "type": "search_bar" },
     {
       "type": "category_grid",
       "children": [
-        {
-          "type": "category_item",
-          "properties": {
-            "title": "Find Doctor",
-            "icon": "SEARCH",
-            "action": "nav:doctors"
-          }
-        },
-        {
-          "type": "category_item",
-          "properties": {
-            "title": "mymed AI",
-            "icon": "AI",
-            "action": "nav:ai"
-          }
-        },
-        {
-          "type": "category_item",
-          "properties": {
-            "title": "Medmates",
-            "icon": "CHAT",
-            "action": "nav:chat"
-          }
-        },
-        {
-          "type": "category_item",
-          "properties": {
-            "title": "Health Hub",
-            "icon": "CALENDAR",
-            "action": "nav:health_hub"
-          }
-        }
+        { "type": "cat_item", "properties": { "title": "Find Doctor", "icon": "SEARCH", "color": "colorPrimary", "action": "nav:doctors" } },
+        { "type": "ai_card" },
+        { "type": "medmates_card" },
+        { "type": "cat_item", "properties": { "title": "Health Hub", "icon": "CALENDAR", "color": "colorYellow", "action": "nav:health_hub" } }
       ]
     },
-    {
-      "type": "sos_banner"
-    },
-    {
-      "type": "section_header",
-      "properties": {
-        "title": "HEALTH ARTICLES",
-        "showViewAll": true
-      },
-      "action": "nav:health_hub"
-    },
-    {
-      "type": "health_tip",
-      "properties": {
-        "title": "Latest Health News",
-        "desc": "Join expert-led health discussions in our community."
-      },
-      "action": "nav:health_hub"
-    },
-    {
-      "type": "section_header",
-      "properties": {
-        "title": "POPULAR SPECIALTIES",
-        "showViewAll": true
-      },
-      "action": "nav:doctors"
-    },
-    {
-      "type": "specialty_scroller",
-      "children": [
-        {
-          "type": "spec",
-          "properties": {
-            "title": "Heart",
-            "imageUrl": "https://img.icons8.com/color/96/heart-with-pulse.png"
-          },
-          "action": "nav:doctors"
-        },
-        {
-          "type": "spec",
-          "properties": {
-            "title": "Eyes",
-            "imageUrl": "https://img.icons8.com/color/96/eye.png"
-          },
-          "action": "nav:doctors"
-        },
-        {
-          "type": "spec",
-          "properties": {
-            "title": "Dentist",
-            "imageUrl": "https://img.icons8.com/color/96/tooth.png"
-          },
-          "action": "nav:doctors"
-        },
-        {
-          "type": "spec",
-          "properties": {
-            "title": "Lungs",
-            "imageUrl": "https://img.icons8.com/color/96/lungs.png"
-          },
-          "action": "nav:doctors"
-        }
-      ]
-    },
-    {
-      "type": "section_header",
-      "properties": {
-        "title": "DAILY HEALTH TIP"
-      }
-    },
-    {
-      "type": "health_tip",
-      "properties": {
-        "title": "Stay Hydrated!",
-        "desc": "Drink at least 8 glasses of water daily to keep your skin and body healthy."
-      }
-    },
-    {
-      "type": "footer",
-      "properties": {
-        "text": "Made with ❤️ for your health\nMy Medecine v3.0"
-      }
-    }
+    { "type": "sos_banner" },
+    { "type": "section_header", "properties": { "title": "Health Articles", "showViewAll": true }, "action": "nav:health_hub" },
+    { "type": "article_block" },
+    { "type": "section_header", "properties": { "title": "Upcoming Appointments", "showViewAll": true }, "action": "nav:appointments" },
+    { "type": "appointment_block" },
+    { "type": "section_header", "properties": { "title": "Upcoming Medicine" } },
+    { "type": "medicine_card" },
+    { "type": "section_header", "properties": { "title": "Special Offers" } },
+    { "type": "banner_slider" },
+    { "type": "section_header", "properties": { "title": "Popular Specialties", "showViewAll": true }, "action": "nav:doctors" },
+    { "type": "specialty_scroller" },
+    { "type": "section_header", "properties": { "title": "Daily Health Tip" } },
+    { "type": "health_tip", "properties": { "title": "Stay Hydrated!", "desc": "Drink at least 8 glasses of water daily." } },
+    { "type": "footer", "properties": { "text": "Designed for your health\nMy Medecine v3.0" } }
   ]
 }
