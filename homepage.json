@@ -1,0 +1,36 @@
+
+{
+  "screenName": "Home",
+  "backgroundColor": "#000000",
+  "sections": [
+    {
+      "type": "text",
+      "properties": { "text": "Hello User,", "size": 14, "bold": false, "margin": 20 }
+    },
+    {
+      "type": "text",
+      "properties": { "text": "Your Health Center", "size": 26, "bold": true, "margin": 20 }
+    },
+    {
+      "type": "banner_slider",
+      "children": [
+        {
+          "type": "banner_item",
+          "properties": {
+            "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500",
+            "action": "nav:doctors"
+          }
+        }
+      ]
+    },
+    {
+      "type": "category_grid",
+      "children": [
+        { "type": "cat", "properties": { "title": "Doctors", "icon": "DOCTOR", "action": "nav:doctors" } },
+        { "type": "cat", "properties": { "title": "MedAI", "icon": "AI", "action": "nav:ai" } },
+        { "type": "cat", "properties": { "title": "Chat", "icon": "CHAT", "action": "nav:chat" } },
+        { "type": "cat", "properties": { "title": "Emergency", "icon": "EMERGENCY", "action": "nav:emergency" } }
+      ]
+    }
+  ]
+}
