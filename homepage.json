@@ -1,520 +1,69 @@
 {
-  "schemaVersion": "3.1",
-  "screen": {
-    "name": "Home",
-    "title": "My Medicine",
-    "backgroundColor": "#070B0A",
-    "refreshIntervalSeconds": 120,
-    "enablePullToRefresh": true,
-    "showLoadingSkeleton": true,
-    "specialTheme": "independence_day_india"
-  },
-
+  "screenName": "Home",
+  "backgroundColor": "#0B0F14",
+  "refreshIntervalSeconds": 120,
   "theme": {
-    "name": "Independence Day 2026",
-
-    "colors": {
-      "primary": "#FF9933",
-      "primaryDark": "#E67E22",
-      "secondary": "#138808",
-
-      "saffron": "#FF9933",
-      "white": "#FFFFFF",
-      "green": "#138808",
-      "chakraBlue": "#000080",
-
-      "background": "#070B0A",
-      "surface": "#111713",
-      "surfaceElevated": "#172019",
-      "border": "#29332C",
-
-      "textPrimary": "#FFFFFF",
-      "textSecondary": "#A7B0AA",
-      "textMuted": "#6F7872",
-
-      "success": "#138808",
-      "warning": "#FFB84D",
-      "danger": "#EF4444",
-
-      "iconBackground": "#10251A"
-    },
-
-    "gradients": {
-      "tricolor": [
-        "#FF9933",
-        "#FFFFFF",
-        "#138808"
-      ],
-
-      "hero": [
-        "#24170C",
-        "#0D1510"
-      ],
-
-      "saffronGlow": [
-        "#FF993355",
-        "#FF993300"
-      ],
-
-      "greenGlow": [
-        "#13880855",
-        "#13880800"
-      ]
-    },
-
-    "spacing": {
-      "screenHorizontal": 20,
-      "sectionSpacing": 24,
-      "itemSpacing": 12,
-      "cardRadius": 18,
-      "buttonRadius": 14
-    }
+    "primary": "#10B981",
+    "background": "#0B0F14",
+    "surface": "#151B23",
+    "border": "#232B35",
+    "textPrimary": "#FFFFFF",
+    "textSecondary": "#9CA3AF",
+    "richRed": "#991B1B",
+    "yellow": "#F5C542",
+    "iconBg": "#0F2E28"
   },
-
-  "independenceDay": {
-    "enabled": true,
-
-    "title": "Happy Independence Day 🇮🇳",
-    "subtitle": "Celebrating the spirit of a healthy and free India",
-
-    "showAshokaChakra": true,
-    "chakraColor": "#000080",
-    "chakraOpacity": 0.12,
-
-    "showTricolorAccent": true,
-    "showFlagAnimation": true,
-
-    "heroStyle": "premium_tricolor",
-    "animation": {
-      "enabled": true,
-      "type": "subtle",
-      "durationMs": 900
-    }
-  },
-
   "sections": [
+    { "type": "welcome_header" },
+    { "type": "search_bar", "properties": { "placeholder": "Search medicines, doctors..." } },
 
     {
-      "id": "independence_hero",
-      "type": "independence_hero",
-      "properties": {
-        "title": "Happy Independence Day",
-        "subtitle": "Celebrating freedom, unity & a healthier India 🇮🇳",
-        "date": "15 August",
-
-        "showFlag": true,
-        "showAshokaChakra": true,
-
-        "flagStyle": "waving",
-        "chakraStyle": "subtle",
-
-        "backgroundGradient": "hero",
-
-        "primaryAction": {
-          "text": "Explore My Medicine",
-          "action": "scroll:home"
-        }
-      }
-    },
-
-    {
-      "id": "welcome",
-      "type": "welcome_header",
-      "properties": {
-        "showGreeting": true,
-        "showProfile": true,
-        "showNotificationButton": true,
-
-        "accentStyle": "tricolor",
-        "greetingAccent": "#FF9933"
-      }
-    },
-
-    {
-      "id": "global_search",
-      "type": "search_bar",
-      "properties": {
-        "placeholder": "Search medicines, doctors, symptoms...",
-        "icon": "SEARCH",
-        "showVoiceSearch": true,
-        "borderColor": "#29332C",
-        "focusedBorderColor": "#FF9933",
-        "action": "search"
-      }
-    },
-
-    {
-      "id": "quick_actions",
       "type": "category_grid",
-      "properties": {
-        "columns": 2,
-        "itemSpacing": 12,
-        "accentStyle": "tricolor"
-      },
-
       "children": [
-
-        {
-          "id": "find_doctor",
-          "type": "cat_item",
-          "properties": {
-            "title": "Find Doctor",
-            "subtitle": "Consult a specialist",
-            "icon": "DOCTOR",
-            "iconBackground": "#10251A",
-            "iconColor": "#138808",
-            "action": "nav:doctors"
-          }
-        },
-
-        {
-          "id": "my_med_ai",
-          "type": "ai_card",
-          "properties": {
-            "title": "My Med AI",
-            "subtitle": "Your smart health assistant",
-            "icon": "AI",
-            "accentColor": "#FF9933",
-            "action": "nav:ai"
-          }
-        },
-
-        {
-          "id": "medmates",
-          "type": "medmates_card",
-          "properties": {
-            "title": "MedMates",
-            "subtitle": "Manage family health",
-            "icon": "GROUP",
-            "iconColor": "#FFFFFF",
-            "accentColor": "#138808",
-            "action": "nav:medmates"
-          }
-        },
-
-        {
-          "id": "health_hub",
-          "type": "cat_item",
-          "properties": {
-            "title": "Health Hub",
-            "subtitle": "Explore health resources",
-            "icon": "HEALTH",
-            "iconBackground": "#20170E",
-            "iconColor": "#FF9933",
-            "action": "nav:health_hub"
-          }
-        }
-
+        { "type": "cat_item", "properties": { "title": "Find Doctor", "icon": "SEARCH", "action": "nav:doctors" } },
+        { "type": "ai_card", "properties": { "title": "AI med Assistant", "desc": "Analyze symptoms with Gemini AI", "badge": "BETA", "iconColor": "#10B981" } },
+        { "type": "medmates_card", "properties": { "title": "My Medmates", "desc": "Connect with others", "badge": "NEW", "iconColor": "#A78BFA" } },
+        { "type": "cat_item", "properties": { "title": "Health Hub", "icon": "CALENDAR", "action": "nav:health_hub" } }
       ]
     },
 
+    { "type": "sos_banner", "properties": { "phone": "112" } },
+
+    { "type": "section_header", "properties": { "title": "Health Articles", "showViewAll": true }, "action": "nav:health_hub" },
+    { "type": "native_articles" },
+
+    { "type": "section_header", "properties": { "title": "Upcoming Appointments", "showViewAll": true }, "action": "nav:appointments" },
+    { "type": "native_appointments" },
+
+    { "type": "section_header", "properties": { "title": "Upcoming Medicine" } },
+    { "type": "native_medicines" },
+
+    { "type": "section_header", "properties": { "title": "Special Offers" } },
+    { "type": "banner_slider" },
+
+    { "type": "section_header", "properties": { "title": "Popular Specialties", "showViewAll": true }, "action": "nav:doctors" },
     {
-      "id": "emergency",
-      "type": "sos_banner",
-      "properties": {
-        "title": "Medical Emergency?",
-        "subtitle": "Get immediate emergency assistance",
-        "phone": "112",
-        "buttonText": "Call 112",
-        "icon": "EMERGENCY",
-        "backgroundColor": "#7F1D1D",
-        "action": "call:112"
-      }
-    },
-
-    {
-      "id": "health_articles_header",
-      "type": "section_header",
-      "properties": {
-        "title": "Health Articles",
-        "subtitle": "Knowledge for a healthier India",
-        "showViewAll": true,
-        "viewAllText": "View All",
-        "accentColor": "#FF9933"
-      },
-      "action": "nav:health_hub"
-    },
-
-    {
-      "id": "health_articles",
-      "type": "native_articles",
-      "properties": {
-        "layout": "horizontal",
-        "itemsToShow": 5,
-        "showCategory": true,
-        "showReadTime": true,
-        "accentStyle": "tricolor"
-      }
-    },
-
-    {
-      "id": "appointments_header",
-      "type": "section_header",
-      "properties": {
-        "title": "Upcoming Appointments",
-        "showViewAll": true,
-        "viewAllText": "View All",
-        "accentColor": "#FFFFFF"
-      },
-      "action": "nav:appointments"
-    },
-
-    {
-      "id": "appointments",
-      "type": "native_appointments",
-      "properties": {
-        "layout": "vertical",
-        "showDoctorImage": true,
-        "showDate": true,
-        "showTime": true,
-        "showStatus": true,
-
-        "emptyState": {
-          "title": "No upcoming appointments",
-          "subtitle": "Book a consultation with a doctor",
-          "buttonText": "Find a Doctor",
-          "buttonStyle": "saffron",
-          "action": "nav:doctors"
-        }
-      }
-    },
-
-    {
-      "id": "medicine_header",
-      "type": "section_header",
-      "properties": {
-        "title": "Upcoming Medicine",
-        "subtitle": "Never miss a dose",
-        "accentColor": "#138808"
-      }
-    },
-
-    {
-      "id": "medicines",
-      "type": "native_medicines",
-      "properties": {
-        "showDosage": true,
-        "showTime": true,
-        "showReminderStatus": true,
-        "enableQuickMarkAsTaken": true,
-
-        "accentStyle": "tricolor",
-
-        "emptyState": {
-          "title": "No medicines scheduled",
-          "subtitle": "Your upcoming medicines will appear here"
-        }
-      }
-    },
-
-    {
-      "id": "special_offers_header",
-      "type": "section_header",
-      "properties": {
-        "title": "Independence Day Offers",
-        "subtitle": "Special benefits for a healthier India",
-        "accentColor": "#FF9933"
-      }
-    },
-
-    {
-      "id": "independence_offers",
-      "type": "banner_slider",
-      "properties": {
-        "autoPlay": true,
-        "autoPlayIntervalSeconds": 5,
-        "showIndicators": true,
-        "loop": true,
-        "aspectRatio": "16:7",
-
-        "theme": "independence_day",
-        "overlayStyle": "dark_gradient"
-      },
-
-      "children": [
-
-        {
-          "id": "freedom_health",
-          "type": "banner_item",
-          "properties": {
-            "title": "Freedom to Stay Healthy",
-            "subtitle": "Take charge of your health this Independence Day 🇮🇳",
-            "badge": "15 AUGUST",
-            "imageUrl": "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=1200",
-            "buttonText": "Explore",
-            "accentColor": "#FF9933"
-          },
-          "action": "nav:health_hub"
-        },
-
-        {
-          "id": "first_order",
-          "type": "banner_item",
-          "properties": {
-            "title": "20% OFF",
-            "subtitle": "Celebrate Independence Day with your first order",
-            "badge": "INDIA SPECIAL",
-            "couponCode": "WELCOME20",
-            "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200",
-            "buttonText": "Claim Offer",
-            "accentColor": "#138808"
-          },
-          "action": "nav:health_hub"
-        },
-
-        {
-          "id": "home_lab",
-          "type": "banner_item",
-          "properties": {
-            "title": "Health at Your Doorstep",
-            "subtitle": "Book lab tests from the comfort of your home",
-            "badge": "HOME CARE",
-            "imageUrl": "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1200",
-            "buttonText": "Book Now",
-            "accentColor": "#FFFFFF"
-          },
-          "action": "nav:appointments"
-        }
-
-      ]
-    },
-
-    {
-      "id": "specialties_header",
-      "type": "section_header",
-      "properties": {
-        "title": "Popular Specialties",
-        "subtitle": "Find the right specialist for you",
-        "showViewAll": true,
-        "viewAllText": "View All",
-        "accentColor": "#138808"
-      },
-      "action": "nav:doctors"
-    },
-
-    {
-      "id": "specialties",
       "type": "specialty_scroller",
-      "properties": {
-        "scrollDirection": "horizontal",
-        "showArrow": false,
-        "accentStyle": "tricolor"
-      },
-
       "children": [
-
-        {
-          "id": "cardiologist",
-          "type": "spec_item",
-          "properties": {
-            "title": "Cardiologist",
-            "icon": "HEART",
-            "iconColor": "#FF9933",
-            "action": "nav:doctors?specialty=cardiologist"
-          }
-        },
-
-        {
-          "id": "dermatologist",
-          "type": "spec_item",
-          "properties": {
-            "title": "Dermatologist",
-            "icon": "SKIN",
-            "iconColor": "#FFFFFF",
-            "action": "nav:doctors?specialty=dermatologist"
-          }
-        },
-
-        {
-          "id": "pediatrician",
-          "type": "spec_item",
-          "properties": {
-            "title": "Pediatrician",
-            "icon": "CHILD",
-            "iconColor": "#138808",
-            "action": "nav:doctors?specialty=pediatrician"
-          }
-        },
-
-        {
-          "id": "orthopedic",
-          "type": "spec_item",
-          "properties": {
-            "title": "Orthopedic",
-            "icon": "BONE",
-            "iconColor": "#FF9933",
-            "action": "nav:doctors?specialty=orthopedic"
-          }
-        },
-
-        {
-          "id": "dentist",
-          "type": "spec_item",
-          "properties": {
-            "title": "Dentist",
-            "icon": "TOOTH",
-            "iconColor": "#FFFFFF",
-            "action": "nav:doctors?specialty=dentist"
-          }
-        },
-
-        {
-          "id": "ent",
-          "type": "spec_item",
-          "properties": {
-            "title": "ENT",
-            "icon": "EAR",
-            "iconColor": "#138808",
-            "action": "nav:doctors?specialty=ent"
-          }
-        }
-
+        { "type": "spec_item", "properties": { "title": "Gastric", "icon": "ABOUT" }, "action": "nav:doctors:Gastric" },
+        { "type": "spec_item", "properties": { "title": "Orthopedics", "icon": "ABOUT" }, "action": "nav:doctors:Orthopedics" },
+        { "type": "spec_item", "properties": { "title": "Dentist", "icon": "ABOUT" }, "action": "nav:doctors:Dentist" },
+        { "type": "spec_item", "properties": { "title": "Heart", "icon": "ABOUT" }, "action": "nav:doctors:Heart" },
+        { "type": "spec_item", "properties": { "title": "Eyes", "icon": "ABOUT" }, "action": "nav:doctors:Eyes" },
+        { "type": "spec_item", "properties": { "title": "Skin", "icon": "ABOUT" }, "action": "nav:doctors:Skin" },
+        { "type": "spec_item", "properties": { "title": "Lungs", "icon": "ABOUT" }, "action": "nav:doctors:Lungs" }
       ]
     },
 
+    { "type": "section_header", "properties": { "title": "Daily Health Tip" } },
     {
-      "id": "daily_tip_header",
-      "type": "section_header",
-      "properties": {
-        "title": "Daily Health Tip",
-        "accentColor": "#FF9933"
-      }
-    },
-
-    {
-      "id": "daily_tip",
       "type": "health_tip",
       "properties": {
-        "title": "Healthy India Starts With You 🇮🇳",
-        "desc": "Stay hydrated, eat balanced meals, stay active and make time for regular health check-ups.",
-        "icon": "HEART",
-        "accentColor": "#138808",
-
-        "badge": {
-          "text": "HEALTHY INDIA",
-          "icon": "INDIA"
-        }
+        "title": "Stay Hydrated!",
+        "desc": "Drink at least 8 glasses of water daily."
       }
     },
 
-    {
-      "id": "independence_footer",
-      "type": "independence_footer",
-      "properties": {
-        "showAshokaChakra": true,
-        "showFlag": true,
-
-        "title": "Proudly Serving a Healthier India",
-        "subtitle": "Freedom • Unity • Health",
-
-        "text": "Designed with care for your health",
-        "appName": "My Medicine",
-        "version": "3.0",
-
-        "showVersion": true,
-        "accentStyle": "tricolor"
-      }
-    }
-
+    { "type": "footer", "properties": { "text": "Designed for your health\nMy Medecine v3.0" } }
   ]
 }
