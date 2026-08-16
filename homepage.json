@@ -1,99 +1,393 @@
 {
-  "screenName": "Home",
-  "backgroundColor": "#0B0F14",
-  "refreshIntervalSeconds": 120,
-  "theme": {
-    "primary": "#10B981",
-    "background": "#0B0F14",
-    "surface": "#151B23",
-    "border": "#232B35",
-    "textPrimary": "#FFFFFF",
-    "textSecondary": "#9CA3AF",
-    "richRed": "#991B1B",
-    "yellow": "#F5C542",
-    "iconBg": "#0F2E28"
+  "schemaVersion": "3.0",
+  "screen": {
+    "name": "Home",
+    "title": "My Medicine",
+    "backgroundColor": "#0B0F14",
+    "refreshIntervalSeconds": 120,
+    "enablePullToRefresh": true,
+    "showLoadingSkeleton": true
   },
+
+  "theme": {
+    "colors": {
+      "primary": "#10B981",
+      "primaryDark": "#059669",
+      "background": "#0B0F14",
+      "surface": "#151B23",
+      "surfaceElevated": "#1B2430",
+      "border": "#232B35",
+      "textPrimary": "#FFFFFF",
+      "textSecondary": "#9CA3AF",
+      "textMuted": "#6B7280",
+      "success": "#10B981",
+      "warning": "#F5C542",
+      "danger": "#EF4444",
+      "dangerDark": "#991B1B",
+      "info": "#3B82F6",
+      "iconBackground": "#0F2E28"
+    },
+
+    "spacing": {
+      "screenHorizontal": 20,
+      "sectionSpacing": 24,
+      "itemSpacing": 12,
+      "cardRadius": 18,
+      "buttonRadius": 14
+    }
+  },
+
   "sections": [
-    { "type": "welcome_header" },
-    { "type": "search_bar", "properties": { "placeholder": "Search medicines, doctors..." } },
 
     {
-      "type": "category_grid",
-      "children": [
-        { "type": "cat_item", "properties": { "title": "Find Doctor", "icon": "SEARCH", "action": "nav:doctors" } },
-        { "type": "ai_card" },
-        { "type": "medmates_card" },
-        { "type": "cat_item", "properties": { "title": "Health Hub", "icon": "CALENDAR", "action": "nav:health_hub" } }
-      ]
-    },
-
-    { "type": "sos_banner", "properties": { "phone": "112" } },
-
-    { "type": "section_header", "properties": { "title": "Health Articles", "showViewAll": true }, "action": "nav:health_hub" },
-    { "type": "native_articles" },
-
-    { "type": "section_header", "properties": { "title": "Upcoming Appointments", "showViewAll": true }, "action": "nav:appointments" },
-    { "type": "native_appointments" },
-
-    { "type": "section_header", "properties": { "title": "Upcoming Medicine" } },
-    { "type": "native_medicines" },
-
-    { "type": "section_header", "properties": { "title": "Special Offers" } },
-    {
-      "type": "banner_slider",
-      "children": [
-        {
-          "type": "banner_item",
-          "properties": {
-            "title": "20% Off on First Order",
-            "subtitle": "Use code WELCOME20",
-            "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800"
-          },
-          "action": "nav:health_hub"
-        },
-        {
-          "type": "banner_item",
-          "properties": {
-            "title": "Free Home Delivery",
-            "subtitle": "On orders above \u20b9499",
-            "imageUrl": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800"
-          },
-          "action": "nav:health_hub"
-        },
-        {
-          "type": "banner_item",
-          "properties": {
-            "title": "Lab Tests at Home",
-            "subtitle": "Book a slot in 2 minutes",
-            "imageUrl": "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800"
-          },
-          "action": "nav:appointments"
-        }
-      ]
-    },
-
-    { "type": "section_header", "properties": { "title": "Popular Specialties", "showViewAll": true }, "action": "nav:doctors" },
-    {
-      "type": "specialty_scroller",
-      "children": [
-        { "type": "spec_item", "properties": { "title": "Cardiologist", "icon": "ABOUT" }, "action": "nav:doctors" },
-        { "type": "spec_item", "properties": { "title": "Dermatologist", "icon": "ABOUT" }, "action": "nav:doctors" },
-        { "type": "spec_item", "properties": { "title": "Pediatrician", "icon": "ABOUT" }, "action": "nav:doctors" },
-        { "type": "spec_item", "properties": { "title": "Orthopedic", "icon": "ABOUT" }, "action": "nav:doctors" },
-        { "type": "spec_item", "properties": { "title": "Dentist", "icon": "ABOUT" }, "action": "nav:doctors" },
-        { "type": "spec_item", "properties": { "title": "ENT", "icon": "ABOUT" }, "action": "nav:doctors" }
-      ]
-    },
-
-    { "type": "section_header", "properties": { "title": "Daily Health Tip" } },
-    {
-      "type": "health_tip",
+      "id": "welcome",
+      "type": "welcome_header",
       "properties": {
-        "title": "Stay Hydrated!",
-        "desc": "Drink at least 8 glasses of water daily."
+        "showGreeting": true,
+        "showProfile": true,
+        "showNotificationButton": true
       }
     },
 
-    { "type": "footer", "properties": { "text": "Designed for your health\nMy Medecine v3.0" } }
+    {
+      "id": "global_search",
+      "type": "search_bar",
+      "properties": {
+        "placeholder": "Search medicines, doctors, symptoms...",
+        "icon": "SEARCH",
+        "showVoiceSearch": true,
+        "action": "search"
+      }
+    },
+
+    {
+      "id": "quick_actions",
+      "type": "category_grid",
+      "properties": {
+        "columns": 2,
+        "itemSpacing": 12
+      },
+      "children": [
+
+        {
+          "id": "find_doctor",
+          "type": "cat_item",
+          "properties": {
+            "title": "Find Doctor",
+            "subtitle": "Consult a specialist",
+            "icon": "DOCTOR",
+            "iconBackground": "#0F2E28",
+            "action": "nav:doctors"
+          }
+        },
+
+        {
+          "id": "my_med_ai",
+          "type": "ai_card",
+          "properties": {
+            "title": "My Med AI",
+            "subtitle": "Your smart health assistant",
+            "icon": "AI",
+            "accentColor": "#10B981",
+            "action": "nav:ai"
+          }
+        },
+
+        {
+          "id": "medmates",
+          "type": "medmates_card",
+          "properties": {
+            "title": "MedMates",
+            "subtitle": "Manage family health",
+            "icon": "GROUP",
+            "action": "nav:medmates"
+          }
+        },
+
+        {
+          "id": "health_hub",
+          "type": "cat_item",
+          "properties": {
+            "title": "Health Hub",
+            "subtitle": "Explore health resources",
+            "icon": "HEALTH",
+            "iconBackground": "#0F2E28",
+            "action": "nav:health_hub"
+          }
+        }
+
+      ]
+    },
+
+    {
+      "id": "emergency",
+      "type": "sos_banner",
+      "properties": {
+        "title": "Medical Emergency?",
+        "subtitle": "Get immediate emergency assistance",
+        "phone": "112",
+        "buttonText": "Call 112",
+        "icon": "EMERGENCY",
+        "backgroundColor": "#991B1B",
+        "action": "call:112"
+      }
+    },
+
+    {
+      "id": "health_articles_header",
+      "type": "section_header",
+      "properties": {
+        "title": "Health Articles",
+        "subtitle": "Trusted information for better health",
+        "showViewAll": true,
+        "viewAllText": "View All"
+      },
+      "action": "nav:health_hub"
+    },
+
+    {
+      "id": "health_articles",
+      "type": "native_articles",
+      "properties": {
+        "layout": "horizontal",
+        "itemsToShow": 5,
+        "showCategory": true,
+        "showReadTime": true
+      }
+    },
+
+    {
+      "id": "appointments_header",
+      "type": "section_header",
+      "properties": {
+        "title": "Upcoming Appointments",
+        "showViewAll": true,
+        "viewAllText": "View All"
+      },
+      "action": "nav:appointments"
+    },
+
+    {
+      "id": "appointments",
+      "type": "native_appointments",
+      "properties": {
+        "layout": "vertical",
+        "showDoctorImage": true,
+        "showDate": true,
+        "showTime": true,
+        "showStatus": true,
+        "emptyState": {
+          "title": "No upcoming appointments",
+          "subtitle": "Book a consultation with a doctor",
+          "buttonText": "Find a Doctor",
+          "action": "nav:doctors"
+        }
+      }
+    },
+
+    {
+      "id": "medicine_header",
+      "type": "section_header",
+      "properties": {
+        "title": "Upcoming Medicine",
+        "subtitle": "Never miss a dose"
+      }
+    },
+
+    {
+      "id": "medicines",
+      "type": "native_medicines",
+      "properties": {
+        "showDosage": true,
+        "showTime": true,
+        "showReminderStatus": true,
+        "enableQuickMarkAsTaken": true,
+        "emptyState": {
+          "title": "No medicines scheduled",
+          "subtitle": "Your upcoming medicines will appear here"
+        }
+      }
+    },
+
+    {
+      "id": "special_offers_header",
+      "type": "section_header",
+      "properties": {
+        "title": "Special Offers",
+        "subtitle": "Exclusive benefits for you"
+      }
+    },
+
+    {
+      "id": "special_offers",
+      "type": "banner_slider",
+      "properties": {
+        "autoPlay": true,
+        "autoPlayIntervalSeconds": 5,
+        "showIndicators": true,
+        "loop": true,
+        "aspectRatio": "16:7"
+      },
+
+      "children": [
+
+        {
+          "id": "welcome_offer",
+          "type": "banner_item",
+          "properties": {
+            "title": "20% OFF",
+            "subtitle": "Get 20% off on your first order",
+            "badge": "NEW USER",
+            "couponCode": "WELCOME20",
+            "imageUrl": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200",
+            "buttonText": "Claim Offer"
+          },
+          "action": "nav:health_hub"
+        },
+
+        {
+          "id": "delivery_offer",
+          "type": "banner_item",
+          "properties": {
+            "title": "Free Home Delivery",
+            "subtitle": "Free delivery on orders above ₹499",
+            "badge": "LIMITED",
+            "imageUrl": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=1200",
+            "buttonText": "Explore Now"
+          },
+          "action": "nav:health_hub"
+        },
+
+        {
+          "id": "lab_test_offer",
+          "type": "banner_item",
+          "properties": {
+            "title": "Lab Tests at Home",
+            "subtitle": "Book your test in just 2 minutes",
+            "badge": "AT HOME",
+            "imageUrl": "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1200",
+            "buttonText": "Book Now"
+          },
+          "action": "nav:appointments"
+        }
+
+      ]
+    },
+
+    {
+      "id": "specialties_header",
+      "type": "section_header",
+      "properties": {
+        "title": "Popular Specialties",
+        "subtitle": "Find the right specialist for you",
+        "showViewAll": true,
+        "viewAllText": "View All"
+      },
+      "action": "nav:doctors"
+    },
+
+    {
+      "id": "specialties",
+      "type": "specialty_scroller",
+      "properties": {
+        "scrollDirection": "horizontal",
+        "showArrow": false
+      },
+
+      "children": [
+
+        {
+          "id": "cardiologist",
+          "type": "spec_item",
+          "properties": {
+            "title": "Cardiologist",
+            "icon": "HEART",
+            "action": "nav:doctors?specialty=cardiologist"
+          }
+        },
+
+        {
+          "id": "dermatologist",
+          "type": "spec_item",
+          "properties": {
+            "title": "Dermatologist",
+            "icon": "SKIN",
+            "action": "nav:doctors?specialty=dermatologist"
+          }
+        },
+
+        {
+          "id": "pediatrician",
+          "type": "spec_item",
+          "properties": {
+            "title": "Pediatrician",
+            "icon": "CHILD",
+            "action": "nav:doctors?specialty=pediatrician"
+          }
+        },
+
+        {
+          "id": "orthopedic",
+          "type": "spec_item",
+          "properties": {
+            "title": "Orthopedic",
+            "icon": "BONE",
+            "action": "nav:doctors?specialty=orthopedic"
+          }
+        },
+
+        {
+          "id": "dentist",
+          "type": "spec_item",
+          "properties": {
+            "title": "Dentist",
+            "icon": "TOOTH",
+            "action": "nav:doctors?specialty=dentist"
+          }
+        },
+
+        {
+          "id": "ent",
+          "type": "spec_item",
+          "properties": {
+            "title": "ENT",
+            "icon": "EAR",
+            "action": "nav:doctors?specialty=ent"
+          }
+        }
+
+      ]
+    },
+
+    {
+      "id": "daily_tip_header",
+      "type": "section_header",
+      "properties": {
+        "title": "Daily Health Tip"
+      }
+    },
+
+    {
+      "id": "daily_tip",
+      "type": "health_tip",
+      "properties": {
+        "title": "Stay Hydrated",
+        "desc": "Regular hydration supports your body's normal functions. Keep water nearby and drink throughout the day.",
+        "icon": "WATER",
+        "accentColor": "#3B82F6"
+      }
+    },
+
+    {
+      "id": "footer",
+      "type": "footer",
+      "properties": {
+        "text": "Designed with care for your health",
+        "appName": "My Medicine",
+        "version": "3.0",
+        "showVersion": true
+      }
+    }
+
   ]
 }
