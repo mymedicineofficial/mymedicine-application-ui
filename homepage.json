@@ -2,418 +2,103 @@
   "screenName": "Home",
   "backgroundColor": "#0B0F14",
   "refreshIntervalSeconds": 120,
-
   "theme": {
     "primary": "#10B981",
-    "primaryDark": "#059669",
     "background": "#0B0F14",
     "surface": "#151B23",
-    "surfaceElevated": "#1B222C",
-    "border": "#26303C",
+    "border": "#232B35",
     "textPrimary": "#FFFFFF",
     "textSecondary": "#9CA3AF",
-    "textMuted": "#6B7280",
     "richRed": "#991B1B",
-    "richRedDark": "#450A0A",
     "yellow": "#F5C542",
-    "purple": "#A78BFA",
-    "iconBg": "#0F2E28",
-    "purpleBg": "#1A1630"
+    "iconBg": "#0F2E28"
   },
-
   "sections": [
 
     {
       "type": "column",
-      "style": {
-        "width": "fill",
-        "padding": "24,16,8,16",
-        "gap": 4
-      },
       "children": [
-        {
-          "type": "text",
-          "text": "Welcome",
-          "style": {
-            "fontSize": 14,
-            "fontWeight": "medium",
-            "color": "theme.textSecondary"
-          }
-        },
-        {
-          "type": "text",
-          "text": "{{userName}}",
-          "style": {
-            "fontSize": 28,
-            "fontWeight": "black",
-            "color": "theme.textPrimary"
-          }
-        }
+        { "type": "text", "text": "Welcome,", "style": { "fontSize": 14, "color": "theme.textSecondary" } },
+        { "type": "text", "text": "{{userName}}", "style": { "fontSize": 28, "fontWeight": "black", "color": "theme.textPrimary", "padding": "0,0,0,24" } }
       ]
     },
 
     {
       "type": "row",
       "action": "nav:health_hub",
-      "style": {
-        "width": "fill",
-        "height": 58,
-        "margin": "8,16,0,16",
-        "background": "theme.surface",
-        "cornerRadius": 18,
-        "elevation": 2,
-        "borderWidth": 1,
-        "borderColor": "theme.border",
-        "padding": "0,16",
-        "crossAlign": "center"
-      },
+      "style": { "width": "fill", "background": "theme.surface", "cornerRadius": 20, "elevation": 3, "borderWidth": 1, "borderColor": "theme.border", "padding": "20,14", "crossAlign": "center" },
       "children": [
-        {
-          "type": "icon",
-          "icon": "SEARCH",
-          "style": {
-            "size": 21,
-            "color": "theme.textSecondary"
-          }
-        },
-        {
-          "type": "text",
-          "text": "Search medicines, doctors...",
-          "style": {
-            "color": "theme.textSecondary",
-            "fontSize": 14,
-            "padding": "0,12,0,0"
-          }
-        }
+        { "type": "icon", "icon": "SEARCH", "style": { "size": 20, "color": "theme.textSecondary" } },
+        { "type": "text", "text": "Search medicines, doctors...", "style": { "color": "theme.textSecondary", "fontSize": 15, "padding": "16,0,0,0" } }
       ]
     },
 
     {
-      "type": "column",
-      "style": {
-        "width": "fill",
-        "padding": "24,16,0,16",
-        "gap": 12
-      },
+      "type": "grid",
+      "style": { "columns": 2, "gap": 12, "padding": "32,0,0,0" },
       "children": [
-
         {
-          "type": "row",
-          "style": {
-            "width": "fill",
-            "gap": 12
-          },
+          "type": "column",
+          "action": "nav:doctors",
+          "style": { "height": "140", "background": "theme.surface", "cornerRadius": 24, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "16", "align": "center", "crossAlign": "center" },
           "children": [
-
-            {
-              "type": "column",
-              "action": "nav:doctors",
-              "style": {
-                "width": "fill",
-                "height": 148,
-                "background": "theme.surface",
-                "cornerRadius": 22,
-                "elevation": 2,
-                "borderWidth": 1,
-                "borderColor": "theme.border",
-                "padding": "16",
-                "align": "center",
-                "crossAlign": "center"
-              },
-              "children": [
-                {
-                  "type": "box",
-                  "style": {
-                    "width": 54,
-                    "height": 54,
-                    "background": "theme.iconBg",
-                    "cornerRadius": 18
-                  },
-                  "children": [
-                    {
-                      "type": "icon",
-                      "icon": "SEARCH",
-                      "style": {
-                        "size": 24,
-                        "color": "theme.primary",
-                        "boxAlign": "center"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type": "text",
-                  "text": "Find Doctor",
-                  "style": {
-                    "color": "theme.textPrimary",
-                    "fontWeight": "bold",
-                    "fontSize": 14,
-                    "textAlign": "center",
-                    "padding": "12,0,0,0"
-                  }
-                },
-                {
-                  "type": "text",
-                  "text": "Consult a specialist",
-                  "style": {
-                    "color": "theme.textMuted",
-                    "fontSize": 10,
-                    "textAlign": "center",
-                    "padding": "4,0,0,0"
-                  }
-                }
-              ]
-            },
-
-            {
-              "type": "box",
-              "action": "nav:ai",
-              "style": {
-                "width": "fill",
-                "height": 148,
-                "background": "theme.surface",
-                "cornerRadius": 22,
-                "elevation": 3,
-                "borderWidth": 1,
-                "borderColor": "theme.border"
-              },
-              "children": [
-                {
-                  "type": "column",
-                  "style": {
-                    "width": "fill",
-                    "height": "fill",
-                    "padding": "16",
-                    "align": "center",
-                    "crossAlign": "center",
-                    "boxAlign": "center"
-                  },
-                  "children": [
-                    {
-                      "type": "box",
-                      "style": {
-                        "width": 54,
-                        "height": 54,
-                        "background": "#1A10B981",
-                        "cornerRadius": 18
-                      },
-                      "children": [
-                        {
-                          "type": "icon",
-                          "icon": "AI",
-                          "style": {
-                            "size": 27,
-                            "color": "theme.primary",
-                            "boxAlign": "center"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "text": "AI Med Assistant",
-                      "style": {
-                        "color": "theme.textPrimary",
-                        "fontWeight": "bold",
-                        "fontSize": 14,
-                        "textAlign": "center",
-                        "padding": "12,0,0,0"
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "text": "Powered by Gemini AI",
-                      "style": {
-                        "color": "theme.textMuted",
-                        "fontSize": 10,
-                        "textAlign": "center",
-                        "padding": "4,0,0,0"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type": "box",
-                  "style": {
-                    "background": "theme.yellow",
-                    "cornerRadius": 7,
-                    "padding": "5,7",
-                    "boxAlign": "topEnd"
-                  },
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "BETA",
-                      "style": {
-                        "color": "#000000",
-                        "fontSize": 8,
-                        "fontWeight": "black"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
+            { "type": "box", "style": { "width": "52", "height": "56", "background": "theme.iconBg", "cornerRadius": 18 }, "children": [
+              { "type": "icon", "icon": "SEARCH", "style": { "size": 24, "color": "theme.primary", "boxAlign": "center" } }
+            ]},
+            { "type": "text", "text": "Find Doctor", "style": { "color": "theme.textPrimary", "fontWeight": "medium", "fontSize": 14, "padding": "0,14,0,0" } }
           ]
         },
-
         {
-          "type": "row",
-          "style": {
-            "width": "fill",
-            "gap": 12
-          },
+          "type": "box",
+          "action": "nav:ai",
+          "style": { "height": "140", "background": "theme.surface", "cornerRadius": 24, "elevation": 4, "borderWidth": 1, "borderColor": "theme.border" },
           "children": [
-
-            {
-              "type": "box",
-              "action": "nav:chat",
-              "style": {
-                "width": "fill",
-                "height": 148,
-                "background": "theme.surface",
-                "cornerRadius": 22,
-                "elevation": 3,
-                "borderWidth": 1,
-                "borderColor": "theme.border"
-              },
-              "children": [
-                {
-                  "type": "column",
-                  "style": {
-                    "width": "fill",
-                    "height": "fill",
-                    "padding": "16",
-                    "align": "center",
-                    "crossAlign": "center",
-                    "boxAlign": "center"
-                  },
-                  "children": [
-                    {
-                      "type": "box",
-                      "style": {
-                        "width": 54,
-                        "height": 54,
-                        "background": "theme.purpleBg",
-                        "cornerRadius": 18
-                      },
-                      "children": [
-                        {
-                          "type": "icon",
-                          "icon": "CHAT",
-                          "style": {
-                            "size": 27,
-                            "color": "theme.purple",
-                            "boxAlign": "center"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "type": "text",
-                      "text": "My Medmates",
-                      "style": {
-                        "color": "theme.textPrimary",
-                        "fontWeight": "bold",
-                        "fontSize": 14,
-                        "textAlign": "center",
-                        "padding": "12,0,0,0"
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "text": "Connect with others",
-                      "style": {
-                        "color": "theme.textMuted",
-                        "fontSize": 10,
-                        "textAlign": "center",
-                        "padding": "4,0,0,0"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type": "box",
-                  "style": {
-                    "background": "theme.richRed",
-                    "cornerRadius": 7,
-                    "padding": "5,7",
-                    "boxAlign": "topEnd"
-                  },
-                  "children": [
-                    {
-                      "type": "text",
-                      "text": "NEW",
-                      "style": {
-                        "color": "#FFFFFF",
-                        "fontSize": 8,
-                        "fontWeight": "black"
-                      }
-                    }
-                  ]
-                }
-              ]
-            },
-
             {
               "type": "column",
-              "action": "nav:health_hub",
-              "style": {
-                "width": "fill",
-                "height": 148,
-                "background": "theme.surface",
-                "cornerRadius": 22,
-                "elevation": 2,
-                "borderWidth": 1,
-                "borderColor": "theme.border",
-                "padding": "16",
-                "align": "center",
-                "crossAlign": "center"
-              },
+              "style": { "padding": "16", "align": "center", "crossAlign": "center", "boxAlign": "center" },
               "children": [
-                {
-                  "type": "box",
-                  "style": {
-                    "width": 54,
-                    "height": 54,
-                    "background": "theme.iconBg",
-                    "cornerRadius": 18
-                  },
-                  "children": [
-                    {
-                      "type": "icon",
-                      "icon": "CALENDAR",
-                      "style": {
-                        "size": 24,
-                        "color": "theme.yellow",
-                        "boxAlign": "center"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type": "text",
-                  "text": "Health Hub",
-                  "style": {
-                    "color": "theme.textPrimary",
-                    "fontWeight": "bold",
-                    "fontSize": 14,
-                    "textAlign": "center",
-                    "padding": "12,0,0,0"
-                  }
-                },
-                {
-                  "type": "text",
-                  "text": "Explore health",
-                  "style": {
-                    "color": "theme.textMuted",
-                    "fontSize": 10,
-                    "textAlign": "center",
-                    "padding": "4,0,0,0"
-                  }
-                }
+                { "type": "box", "style": { "width": "52", "height": "56", "background": "#1A10B981", "cornerRadius": 20 }, "children": [
+                  { "type": "icon", "icon": "AI", "style": { "size": 28, "color": "theme.primary", "boxAlign": "center" } }
+                ]},
+                { "type": "text", "text": "AI med Assistant", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "textAlign": "center", "padding": "0,12,0,0" } },
+                { "type": "text", "text": "Analyze symptoms with Gemini AI", "style": { "color": "theme.textSecondary", "fontSize": 10, "textAlign": "center" } }
               ]
-            }
+            },
+            { "type": "box", "style": { "background": "theme.yellow", "cornerRadius": 8, "padding": "6,2", "margin": "0,10,10,0", "boxAlign": "topEnd" }, "children": [
+              { "type": "text", "text": "BETA", "style": { "color": "#000000", "fontSize": 8, "fontWeight": "black" } }
+            ]}
+          ]
+        },
+        {
+          "type": "box",
+          "action": "nav:chat",
+          "style": { "height": "140", "background": "theme.surface", "cornerRadius": 24, "elevation": 4, "borderWidth": 1, "borderColor": "theme.border" },
+          "children": [
+            {
+              "type": "column",
+              "style": { "padding": "16", "align": "center", "crossAlign": "center", "boxAlign": "center" },
+              "children": [
+                { "type": "box", "style": { "width": "52", "height": "56", "background": "#1AA78BFA", "cornerRadius": 20 }, "children": [
+                  { "type": "icon", "icon": "CHAT", "style": { "size": 28, "color": "#A78BFA", "boxAlign": "center" } }
+                ]},
+                { "type": "text", "text": "My Medmates", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "textAlign": "center", "padding": "0,12,0,0" } },
+                { "type": "text", "text": "Connect with others", "style": { "color": "theme.textSecondary", "fontSize": 10, "textAlign": "center" } }
+              ]
+            },
+            { "type": "box", "style": { "background": "theme.richRed", "cornerRadius": 8, "padding": "6,2", "margin": "0,10,10,0", "boxAlign": "topEnd" }, "children": [
+              { "type": "text", "text": "NEW", "style": { "color": "#FFFFFF", "fontSize": 8, "fontWeight": "black" } }
+            ]}
+          ]
+        },
+        {
+          "type": "column",
+          "action": "nav:health_hub",
+          "style": { "height": "140", "background": "theme.surface", "cornerRadius": 24, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "16", "align": "center", "crossAlign": "center" },
+          "children": [
+            { "type": "box", "style": { "width": "52", "height": "56", "background": "theme.iconBg", "cornerRadius": 18 }, "children": [
+              { "type": "icon", "icon": "CALENDAR", "style": { "size": 24, "color": "theme.yellow", "boxAlign": "center" } }
+            ]},
+            { "type": "text", "text": "Health Hub", "style": { "color": "theme.textPrimary", "fontWeight": "medium", "fontSize": 14, "padding": "0,14,0,0" } }
           ]
         }
       ]
@@ -421,68 +106,26 @@
 
     {
       "type": "box",
-      "style": {
-        "width": "fill",
-        "margin": "24,16,0,16",
-        "cornerRadius": 22,
-        "elevation": 6,
-        "gradientFrom": "theme.richRed",
-        "gradientTo": "theme.richRedDark"
-      },
+      "style": { "width": "fill", "cornerRadius": 24, "elevation": 8, "gradientFrom": "theme.richRed", "gradientTo": "#450A0A", "padding": "0,28,0,0" },
       "children": [
         {
           "type": "row",
-          "style": {
-            "width": "fill",
-            "padding": "20,18",
-            "crossAlign": "center"
-          },
+          "style": { "padding": "24", "crossAlign": "center", "width": "fill" },
           "children": [
             {
               "type": "column",
-              "style": {
-                "width": "fill",
-                "gap": 4
-              },
+              "style": { "width": "fill" },
               "children": [
-                {
-                  "type": "text",
-                  "text": "EMERGENCY",
-                  "style": {
-                    "color": "#FFFFFF",
-                    "fontSize": 18,
-                    "fontWeight": "black"
-                  }
-                },
-                {
-                  "type": "text",
-                  "text": "Call 112 for immediate help",
-                  "style": {
-                    "color": "#FECACA",
-                    "fontSize": 12
-                  }
-                }
+                { "type": "text", "text": "EMERGENCY", "style": { "color": "#FFFFFF", "fontSize": 20, "fontWeight": "bold" } },
+                { "type": "text", "text": "Call 112 for immediate help", "style": { "color": "#FECACA", "fontSize": 13, "padding": "0,4,0,0" } }
               ]
             },
             {
               "type": "box",
               "action": "tel:112",
-              "style": {
-                "background": "#FFFFFF",
-                "cornerRadius": 14,
-                "padding": "13,12",
-                "boxAlign": "center"
-              },
+              "style": { "background": "#FFFFFF", "cornerRadius": 16, "padding": "18,10" },
               "children": [
-                {
-                  "type": "text",
-                  "text": "CALL NOW",
-                  "style": {
-                    "color": "theme.richRed",
-                    "fontWeight": "black",
-                    "fontSize": 10
-                  }
-                }
+                { "type": "text", "text": "CALL NOW", "style": { "color": "theme.richRed", "fontWeight": "black", "fontSize": 11 } }
               ]
             }
           ]
@@ -493,495 +136,87 @@
     {
       "type": "row",
       "action": "nav:health_hub",
-      "style": {
-        "width": "fill",
-        "margin": "28,16,0,16",
-        "crossAlign": "center"
-      },
+      "style": { "padding": "0,40,0,16", "crossAlign": "center" },
       "children": [
-        {
-          "type": "text",
-          "text": "Health Articles",
-          "style": {
-            "width": "fill",
-            "color": "theme.textPrimary",
-            "fontSize": 15,
-            "fontWeight": "bold"
-          }
-        },
-        {
-          "type": "text",
-          "text": "VIEW ALL",
-          "style": {
-            "color": "theme.primary",
-            "fontSize": 11,
-            "fontWeight": "bold"
-          }
-        }
+        { "type": "text", "text": "Health Articles", "style": { "width": "fill", "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold" } },
+        { "type": "text", "text": "VIEW ALL", "style": { "color": "theme.primary", "fontSize": 12, "fontWeight": "bold" } }
       ]
     },
-
-    {
-      "type": "native_slot",
-      "nativeKey": "native_articles"
-    },
+    { "type": "native_slot", "nativeKey": "native_articles" },
 
     {
       "type": "row",
       "action": "nav:appointments",
-      "style": {
-        "width": "fill",
-        "margin": "28,16,0,16",
-        "crossAlign": "center"
-      },
+      "style": { "padding": "0,40,0,16", "crossAlign": "center" },
       "children": [
-        {
-          "type": "text",
-          "text": "Upcoming Appointments",
-          "style": {
-            "width": "fill",
-            "color": "theme.textPrimary",
-            "fontSize": 15,
-            "fontWeight": "bold"
-          }
-        },
-        {
-          "type": "text",
-          "text": "VIEW ALL",
-          "style": {
-            "color": "theme.primary",
-            "fontSize": 11,
-            "fontWeight": "bold"
-          }
-        }
+        { "type": "text", "text": "Upcoming Appointments", "style": { "width": "fill", "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold" } },
+        { "type": "text", "text": "VIEW ALL", "style": { "color": "theme.primary", "fontSize": 12, "fontWeight": "bold" } }
       ]
     },
+    { "type": "native_slot", "nativeKey": "native_appointments" },
 
-    {
-      "type": "native_slot",
-      "nativeKey": "native_appointments"
-    },
+    { "type": "text", "text": "Upcoming Medicine", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,40,0,16" } },
+    { "type": "native_slot", "nativeKey": "native_medicines" },
 
-    {
-      "type": "text",
-      "text": "Upcoming Medicine",
-      "style": {
-        "color": "theme.textPrimary",
-        "fontSize": 15,
-        "fontWeight": "bold",
-        "padding": "28,16,0,16"
-      }
-    },
-
-    {
-      "type": "native_slot",
-      "nativeKey": "native_medicines"
-    },
-
-    {
-      "type": "text",
-      "text": "Special Offers",
-      "style": {
-        "color": "theme.textPrimary",
-        "fontSize": 15,
-        "fontWeight": "bold",
-        "padding": "28,16,0,16"
-      }
-    },
-
-    {
-      "type": "native_slot",
-      "nativeKey": "banner_slider"
-    },
+    { "type": "text", "text": "Special Offers", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,40,0,16" } },
+    { "type": "native_slot", "nativeKey": "banner_slider" },
 
     {
       "type": "row",
       "action": "nav:doctors:All",
-      "style": {
-        "width": "fill",
-        "margin": "28,16,0,16",
-        "crossAlign": "center"
-      },
+      "style": { "padding": "0,40,0,16", "crossAlign": "center" },
       "children": [
-        {
-          "type": "text",
-          "text": "Popular Specialties",
-          "style": {
-            "width": "fill",
-            "color": "theme.textPrimary",
-            "fontSize": 15,
-            "fontWeight": "bold"
-          }
-        },
-        {
-          "type": "text",
-          "text": "VIEW ALL",
-          "style": {
-            "color": "theme.primary",
-            "fontSize": 11,
-            "fontWeight": "bold"
-          }
-        }
+        { "type": "text", "text": "Popular Specialties", "style": { "width": "fill", "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold" } },
+        { "type": "text", "text": "VIEW ALL", "style": { "color": "theme.primary", "fontSize": 12, "fontWeight": "bold" } }
+      ]
+    },
+    {
+      "type": "row",
+      "style": { "scroll": true, "gap": 16 },
+      "children": [
+        { "type": "column", "action": "nav:doctors:Gastric", "style": { "width": "110", "height": "145", "background": "theme.surface", "cornerRadius": 26, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "8,16", "align": "center", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 32, "color": "theme.primary" } },
+          { "type": "text", "text": "Gastric", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 13, "textAlign": "center", "padding": "0,12,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Orthopedics", "style": { "width": "110", "height": "145", "background": "theme.surface", "cornerRadius": 26, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "8,16", "align": "center", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 32, "color": "theme.primary" } },
+          { "type": "text", "text": "Ortho", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 13, "textAlign": "center", "padding": "0,12,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Dentist", "style": { "width": "110", "height": "145", "background": "theme.surface", "cornerRadius": 26, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "8,16", "align": "center", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 32, "color": "theme.primary" } },
+          { "type": "text", "text": "Dentist", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 13, "textAlign": "center", "padding": "0,12,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Heart", "style": { "width": "110", "height": "145", "background": "theme.surface", "cornerRadius": 26, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "8,16", "align": "center", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 32, "color": "theme.primary" } },
+          { "type": "text", "text": "Heart", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 13, "textAlign": "center", "padding": "0,12,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Eyes", "style": { "width": "110", "height": "145", "background": "theme.surface", "cornerRadius": 26, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "8,16", "align": "center", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 32, "color": "theme.primary" } },
+          { "type": "text", "text": "Eyes", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 13, "textAlign": "center", "padding": "0,12,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Skin", "style": { "width": "110", "height": "145", "background": "theme.surface", "cornerRadius": 26, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "8,16", "align": "center", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 32, "color": "theme.primary" } },
+          { "type": "text", "text": "Skin", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 13, "textAlign": "center", "padding": "0,12,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Lungs", "style": { "width": "110", "height": "145", "background": "theme.surface", "cornerRadius": 26, "elevation": 2, "borderWidth": 1, "borderColor": "theme.border", "padding": "8,16", "align": "center", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 32, "color": "theme.primary" } },
+          { "type": "text", "text": "Lungs", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 13, "textAlign": "center", "padding": "0,12,0,0" } }
+        ]}
       ]
     },
 
+    { "type": "text", "text": "Daily Health Tip", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,40,0,16" } },
     {
       "type": "row",
-      "style": {
-        "width": "fill",
-        "scroll": true,
-        "gap": 12,
-        "padding": "14,16,0,16"
-      },
+      "style": { "width": "fill", "background": "#1B222C", "cornerRadius": 24, "elevation": 1, "borderWidth": 1, "borderColor": "theme.border", "padding": "24", "crossAlign": "center" },
       "children": [
-
+        { "type": "icon", "icon": "ABOUT", "style": { "size": 36, "color": "theme.primary" } },
         {
           "type": "column",
-          "action": "nav:doctors:Gastric",
-          "style": {
-            "width": 112,
-            "height": 138,
-            "background": "theme.surface",
-            "cornerRadius": 22,
-            "elevation": 2,
-            "borderWidth": 1,
-            "borderColor": "theme.border",
-            "padding": "14",
-            "align": "center",
-            "crossAlign": "center"
-          },
+          "style": { "padding": "20,0,0,0" },
           "children": [
-            {
-              "type": "box",
-              "style": {
-                "width": 52,
-                "height": 52,
-                "background": "theme.iconBg",
-                "cornerRadius": 17
-              },
-              "children": [
-                {
-                  "type": "icon",
-                  "icon": "ABOUT",
-                  "style": {
-                    "size": 28,
-                    "color": "theme.primary",
-                    "boxAlign": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "Gastric",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 13,
-                "textAlign": "center",
-                "padding": "12,0,0,0"
-              }
-            }
-          ]
-        },
-
-        {
-          "type": "column",
-          "action": "nav:doctors:Orthopedics",
-          "style": {
-            "width": 112,
-            "height": 138,
-            "background": "theme.surface",
-            "cornerRadius": 22,
-            "elevation": 2,
-            "borderWidth": 1,
-            "borderColor": "theme.border",
-            "padding": "14",
-            "align": "center",
-            "crossAlign": "center"
-          },
-          "children": [
-            {
-              "type": "box",
-              "style": {
-                "width": 52,
-                "height": 52,
-                "background": "theme.iconBg",
-                "cornerRadius": 17
-              },
-              "children": [
-                {
-                  "type": "icon",
-                  "icon": "ABOUT",
-                  "style": {
-                    "size": 28,
-                    "color": "theme.primary",
-                    "boxAlign": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "Ortho",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 13,
-                "textAlign": "center",
-                "padding": "12,0,0,0"
-              }
-            }
-          ]
-        },
-
-        {
-          "type": "column",
-          "action": "nav:doctors:Dentist",
-          "style": {
-            "width": 112,
-            "height": 138,
-            "background": "theme.surface",
-            "cornerRadius": 22,
-            "elevation": 2,
-            "borderWidth": 1,
-            "borderColor": "theme.border",
-            "padding": "14",
-            "align": "center",
-            "crossAlign": "center"
-          },
-          "children": [
-            {
-              "type": "box",
-              "style": {
-                "width": 52,
-                "height": 52,
-                "background": "theme.iconBg",
-                "cornerRadius": 17
-              },
-              "children": [
-                {
-                  "type": "icon",
-                  "icon": "ABOUT",
-                  "style": {
-                    "size": 28,
-                    "color": "theme.primary",
-                    "boxAlign": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "Dentist",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 13,
-                "textAlign": "center",
-                "padding": "12,0,0,0"
-              }
-            }
-          ]
-        },
-
-        {
-          "type": "column",
-          "action": "nav:doctors:Heart",
-          "style": {
-            "width": 112,
-            "height": 138,
-            "background": "theme.surface",
-            "cornerRadius": 22,
-            "elevation": 2,
-            "borderWidth": 1,
-            "borderColor": "theme.border",
-            "padding": "14",
-            "align": "center",
-            "crossAlign": "center"
-          },
-          "children": [
-            {
-              "type": "box",
-              "style": {
-                "width": 52,
-                "height": 52,
-                "background": "#24151A",
-                "cornerRadius": 17
-              },
-              "children": [
-                {
-                  "type": "icon",
-                  "icon": "ABOUT",
-                  "style": {
-                    "size": 28,
-                    "color": "#F87171",
-                    "boxAlign": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "Heart",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 13,
-                "textAlign": "center",
-                "padding": "12,0,0,0"
-              }
-            }
-          ]
-        },
-
-        {
-          "type": "column",
-          "action": "nav:doctors:Eyes",
-          "style": {
-            "width": 112,
-            "height": 138,
-            "background": "theme.surface",
-            "cornerRadius": 22,
-            "elevation": 2,
-            "borderWidth": 1,
-            "borderColor": "theme.border",
-            "padding": "14",
-            "align": "center",
-            "crossAlign": "center"
-          },
-          "children": [
-            {
-              "type": "box",
-              "style": {
-                "width": 52,
-                "height": 52,
-                "background": "theme.iconBg",
-                "cornerRadius": 17
-              },
-              "children": [
-                {
-                  "type": "icon",
-                  "icon": "ABOUT",
-                  "style": {
-                    "size": 28,
-                    "color": "theme.primary",
-                    "boxAlign": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "Eyes",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 13,
-                "textAlign": "center",
-                "padding": "12,0,0,0"
-              }
-            }
-          ]
-        },
-
-        {
-          "type": "column",
-          "action": "nav:doctors:Skin",
-          "style": {
-            "width": 112,
-            "height": 138,
-            "background": "theme.surface",
-            "cornerRadius": 22,
-            "elevation": 2,
-            "borderWidth": 1,
-            "borderColor": "theme.border",
-            "padding": "14",
-            "align": "center",
-            "crossAlign": "center"
-          },
-          "children": [
-            {
-              "type": "box",
-              "style": {
-                "width": 52,
-                "height": 52,
-                "background": "theme.iconBg",
-                "cornerRadius": 17
-              },
-              "children": [
-                {
-                  "type": "icon",
-                  "icon": "ABOUT",
-                  "style": {
-                    "size": 28,
-                    "color": "theme.primary",
-                    "boxAlign": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "Skin",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 13,
-                "textAlign": "center",
-                "padding": "12,0,0,0"
-              }
-            }
-          ]
-        },
-
-        {
-          "type": "column",
-          "action": "nav:doctors:Lungs",
-          "style": {
-            "width": 112,
-            "height": 138,
-            "background": "theme.surface",
-            "cornerRadius": 22,
-            "elevation": 2,
-            "borderWidth": 1,
-            "borderColor": "theme.border",
-            "padding": "14",
-            "align": "center",
-            "crossAlign": "center"
-          },
-          "children": [
-            {
-              "type": "box",
-              "style": {
-                "width": 52,
-                "height": 52,
-                "background": "theme.iconBg",
-                "cornerRadius": 17
-              },
-              "children": [
-                {
-                  "type": "icon",
-                  "icon": "ABOUT",
-                  "style": {
-                    "size": 28,
-                    "color": "theme.primary",
-                    "boxAlign": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "text": "Lungs",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 13,
-                "textAlign": "center",
-                "padding": "12,0,0,0"
-              }
-            }
+            { "type": "text", "text": "Stay Hydrated!", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 16 } },
+            { "type": "text", "text": "Drink at least 8 glasses of water daily.", "style": { "color": "theme.textSecondary", "fontSize": 13 } }
           ]
         }
       ]
@@ -989,90 +224,8 @@
 
     {
       "type": "text",
-      "text": "Daily Health Tip",
-      "style": {
-        "color": "theme.textPrimary",
-        "fontSize": 15,
-        "fontWeight": "bold",
-        "padding": "28,16,0,16"
-      }
-    },
-
-    {
-      "type": "row",
-      "style": {
-        "width": "fill",
-        "margin": "14,16,0,16",
-        "background": "theme.surfaceElevated",
-        "cornerRadius": 22,
-        "elevation": 1,
-        "borderWidth": 1,
-        "borderColor": "theme.border",
-        "padding": "18",
-        "crossAlign": "center"
-      },
-      "children": [
-        {
-          "type": "box",
-          "style": {
-            "width": 52,
-            "height": 52,
-            "background": "theme.iconBg",
-            "cornerRadius": 17
-          },
-          "children": [
-            {
-              "type": "icon",
-              "icon": "ABOUT",
-              "style": {
-                "size": 28,
-                "color": "theme.primary",
-                "boxAlign": "center"
-              }
-            }
-          ]
-        },
-        {
-          "type": "column",
-          "style": {
-            "width": "fill",
-            "padding": "0,0,0,14",
-            "gap": 4
-          },
-          "children": [
-            {
-              "type": "text",
-              "text": "Stay Hydrated!",
-              "style": {
-                "color": "theme.textPrimary",
-                "fontWeight": "bold",
-                "fontSize": 15
-              }
-            },
-            {
-              "type": "text",
-              "text": "Drink enough water throughout the day.",
-              "style": {
-                "color": "theme.textSecondary",
-                "fontSize": 12
-              }
-            }
-          ]
-        }
-      ]
-    },
-
-    {
-      "type": "text",
-      "text": "Designed for your health\nMy Medicine v3.0",
-      "style": {
-        "width": "fill",
-        "padding": "36,16,32,16",
-        "textAlign": "center",
-        "color": "theme.textMuted",
-        "fontSize": 11,
-        "opacity": 0.7
-      }
+      "text": "Designed for your health\nMy Medecine v3.0",
+      "style": { "width": "fill", "padding": "0,64,0,24", "textAlign": "center", "color": "theme.textSecondary", "fontSize": 12, "opacity": 0.7 }
     }
   ]
 }
