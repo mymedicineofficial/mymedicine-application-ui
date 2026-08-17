@@ -14,56 +14,208 @@
     "iconBg": "#0F2E28"
   },
   "sections": [
-    { "type": "welcome_header" },
-    { "type": "search_bar", "properties": { "placeholder": "Search medicines, doctors..." } },
-
     {
-      "type": "category_grid",
+      "type": "column",
+      "style": { "padding": "0,16" },
       "children": [
-        { "type": "cat_item", "properties": { "title": "Find Doctor", "icon": "SEARCH", "action": "nav:doctors" } },
-        { "type": "ai_card", "properties": { "title": "AI med Assistant", "desc": "Analyze symptoms with Gemini AI", "badge": "BETA", "iconColor": "#10B981" } },
-        { "type": "medmates_card", "properties": { "title": "My Medmates", "desc": "Connect with others", "badge": "NEW", "iconColor": "#A78BFA" } },
-        { "type": "cat_item", "properties": { "title": "Health Hub", "icon": "CALENDAR", "action": "nav:health_hub" } }
+        { "type": "text", "text": "Welcome,", "style": { "fontSize": 14, "color": "theme.textSecondary" } },
+        { "type": "text", "text": "{{userName}}", "style": { "fontSize": 28, "fontWeight": "black", "color": "theme.textPrimary" } }
       ]
     },
 
-    { "type": "sos_banner", "properties": { "phone": "112" } },
-
-    { "type": "section_header", "properties": { "title": "Health Articles", "showViewAll": true }, "action": "nav:health_hub" },
-    { "type": "native_articles" },
-
-    { "type": "section_header", "properties": { "title": "Upcoming Appointments", "showViewAll": true }, "action": "nav:appointments" },
-    { "type": "native_appointments" },
-
-    { "type": "section_header", "properties": { "title": "Upcoming Medicine" } },
-    { "type": "native_medicines" },
-
-    { "type": "section_header", "properties": { "title": "Special Offers" } },
-    { "type": "banner_slider" },
-
-    { "type": "section_header", "properties": { "title": "Popular Specialties", "showViewAll": true }, "action": "nav:doctors" },
     {
-      "type": "specialty_scroller",
+      "type": "row",
+      "action": "nav:health_hub",
+      "style": { "width": "fill", "height": "56", "background": "theme.surface", "cornerRadius": 20, "borderWidth": 1, "borderColor": "theme.border", "padding": "20,0", "crossAlign": "center" },
       "children": [
-        { "type": "spec_item", "properties": { "title": "Gastric", "icon": "ABOUT" }, "action": "nav:doctors:Gastric" },
-        { "type": "spec_item", "properties": { "title": "Orthopedics", "icon": "ABOUT" }, "action": "nav:doctors:Orthopedics" },
-        { "type": "spec_item", "properties": { "title": "Dentist", "icon": "ABOUT" }, "action": "nav:doctors:Dentist" },
-        { "type": "spec_item", "properties": { "title": "Heart", "icon": "ABOUT" }, "action": "nav:doctors:Heart" },
-        { "type": "spec_item", "properties": { "title": "Eyes", "icon": "ABOUT" }, "action": "nav:doctors:Eyes" },
-        { "type": "spec_item", "properties": { "title": "Skin", "icon": "ABOUT" }, "action": "nav:doctors:Skin" },
-        { "type": "spec_item", "properties": { "title": "Lungs", "icon": "ABOUT" }, "action": "nav:doctors:Lungs" }
+        { "type": "icon", "icon": "SEARCH", "style": { "size": 20, "color": "theme.textSecondary" } },
+        { "type": "text", "text": "Search medicines, doctors...", "style": { "color": "theme.textSecondary", "padding": "16,0,0,0" } }
       ]
     },
 
-    { "type": "section_header", "properties": { "title": "Daily Health Tip" } },
     {
-      "type": "health_tip",
-      "properties": {
-        "title": "Stay Hydrated!",
-        "desc": "Drink at least 8 glasses of water daily."
-      }
+      "type": "column",
+      "style": { "gap": 12, "padding": "0,12,0,0" },
+      "children": [
+        {
+          "type": "row",
+          "style": { "gap": 12 },
+          "children": [
+            {
+              "type": "column",
+              "action": "nav:doctors",
+              "style": { "width": "fill", "height": "140", "background": "theme.surface", "cornerRadius": 24, "borderWidth": 1, "borderColor": "theme.border", "padding": "16", "align": "center", "crossAlign": "center" },
+              "children": [
+                { "type": "box", "style": { "width": "52", "height": "56", "background": "theme.iconBg", "cornerRadius": 18 }, "children": [
+                  { "type": "icon", "icon": "SEARCH", "style": { "size": 24, "color": "theme.primary", "boxAlign": "center" } }
+                ]},
+                { "type": "text", "text": "Find Doctor", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "padding": "0,12,0,0" } }
+              ]
+            },
+            {
+              "type": "box",
+              "action": "nav:ai",
+              "style": { "width": "fill", "height": "140", "background": "theme.surface", "cornerRadius": 24, "borderWidth": 1, "borderColor": "theme.border" },
+              "children": [
+                {
+                  "type": "column",
+                  "style": { "padding": "16", "align": "center", "crossAlign": "center", "boxAlign": "center" },
+                  "children": [
+                    { "type": "box", "style": { "width": "52", "height": "56", "background": "#1A10B981", "cornerRadius": 18 }, "children": [
+                      { "type": "icon", "icon": "AI", "style": { "size": 28, "color": "theme.primary", "boxAlign": "center" } }
+                    ]},
+                    { "type": "text", "text": "AI med Assistant", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "padding": "0,12,0,0" } },
+                    { "type": "text", "text": "Analyze symptoms with Gemini AI", "style": { "color": "theme.textSecondary", "fontSize": 10 } }
+                  ]
+                },
+                { "type": "box", "style": { "background": "theme.yellow", "cornerRadius": 8, "padding": "6,2", "boxAlign": "topEnd" }, "children": [
+                  { "type": "text", "text": "BETA", "style": { "color": "#000000", "fontSize": 8, "fontWeight": "black" } }
+                ]}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "style": { "gap": 12 },
+          "children": [
+            {
+              "type": "box",
+              "action": "nav:chat",
+              "style": { "width": "fill", "height": "140", "background": "theme.surface", "cornerRadius": 24, "borderWidth": 1, "borderColor": "theme.border" },
+              "children": [
+                {
+                  "type": "column",
+                  "style": { "padding": "16", "align": "center", "crossAlign": "center", "boxAlign": "center" },
+                  "children": [
+                    { "type": "box", "style": { "width": "52", "height": "56", "background": "#1AA78BFA", "cornerRadius": 18 }, "children": [
+                      { "type": "icon", "icon": "CHAT", "style": { "size": 28, "color": "#A78BFA", "boxAlign": "center" } }
+                    ]},
+                    { "type": "text", "text": "My Medmates", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "padding": "0,12,0,0" } },
+                    { "type": "text", "text": "Connect with others", "style": { "color": "theme.textSecondary", "fontSize": 10 } }
+                  ]
+                },
+                { "type": "box", "style": { "background": "theme.richRed", "cornerRadius": 8, "padding": "6,2", "boxAlign": "topEnd" }, "children": [
+                  { "type": "text", "text": "NEW", "style": { "color": "#FFFFFF", "fontSize": 8, "fontWeight": "black" } }
+                ]}
+              ]
+            },
+            {
+              "type": "column",
+              "action": "nav:health_hub",
+              "style": { "width": "fill", "height": "140", "background": "theme.surface", "cornerRadius": 24, "borderWidth": 1, "borderColor": "theme.border", "padding": "16", "align": "center", "crossAlign": "center" },
+              "children": [
+                { "type": "box", "style": { "width": "52", "height": "56", "background": "theme.iconBg", "cornerRadius": 18 }, "children": [
+                  { "type": "icon", "icon": "CALENDAR", "style": { "size": 24, "color": "theme.yellow", "boxAlign": "center" } }
+                ]},
+                { "type": "text", "text": "Health Hub", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "padding": "0,12,0,0" } }
+              ]
+            }
+          ]
+        }
+      ]
     },
 
-    { "type": "footer", "properties": { "text": "Designed for your health\nMy Medecine v3.0" } }
+    {
+      "type": "box",
+      "style": { "width": "fill", "cornerRadius": 24, "gradientFrom": "theme.richRed", "gradientTo": "#450A0A", "padding": "0,12,0,0" },
+      "children": [
+        {
+          "type": "row",
+          "style": { "padding": "24", "crossAlign": "center", "width": "fill" },
+          "children": [
+            {
+              "type": "column",
+              "style": { "width": "fill" },
+              "children": [
+                { "type": "text", "text": "EMERGENCY", "style": { "color": "#FFFFFF", "fontSize": 20, "fontWeight": "bold" } },
+                { "type": "text", "text": "Call 112 for immediate help", "style": { "color": "#FECACA", "fontSize": 13 } }
+              ]
+            },
+            {
+              "type": "box",
+              "action": "tel:112",
+              "style": { "background": "#FFFFFF", "cornerRadius": 16, "padding": "18,10" },
+              "children": [
+                { "type": "text", "text": "CALL NOW", "style": { "color": "theme.richRed", "fontWeight": "black", "fontSize": 11 } }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    { "type": "text", "text": "Health Articles", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,24,0,8" } },
+    { "type": "native_slot", "nativeKey": "native_articles" },
+
+    { "type": "text", "text": "Upcoming Appointments", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,24,0,8" } },
+    { "type": "native_slot", "nativeKey": "native_appointments" },
+
+    { "type": "text", "text": "Upcoming Medicine", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,24,0,8" } },
+    { "type": "native_slot", "nativeKey": "native_medicines" },
+
+    { "type": "text", "text": "Special Offers", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,24,0,8" } },
+    { "type": "native_slot", "nativeKey": "banner_slider" },
+
+    { "type": "text", "text": "Popular Specialties", "action": "nav:doctors", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,24,0,8" } },
+    {
+      "type": "row",
+      "style": { "scroll": true, "gap": 16 },
+      "children": [
+        { "type": "column", "action": "nav:doctors:Gastric", "style": { "width": "72", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 24, "color": "theme.primary" } },
+          { "type": "text", "text": "Gastric", "style": { "color": "theme.textSecondary", "fontSize": 11, "textAlign": "center", "maxLines": 2, "padding": "0,6,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Orthopedics", "style": { "width": "72", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 24, "color": "theme.primary" } },
+          { "type": "text", "text": "Orthopedics", "style": { "color": "theme.textSecondary", "fontSize": 11, "textAlign": "center", "maxLines": 2, "padding": "0,6,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Dentist", "style": { "width": "72", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 24, "color": "theme.primary" } },
+          { "type": "text", "text": "Dentist", "style": { "color": "theme.textSecondary", "fontSize": 11, "textAlign": "center", "maxLines": 2, "padding": "0,6,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Heart", "style": { "width": "72", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 24, "color": "theme.primary" } },
+          { "type": "text", "text": "Heart", "style": { "color": "theme.textSecondary", "fontSize": 11, "textAlign": "center", "maxLines": 2, "padding": "0,6,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Eyes", "style": { "width": "72", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 24, "color": "theme.primary" } },
+          { "type": "text", "text": "Eyes", "style": { "color": "theme.textSecondary", "fontSize": 11, "textAlign": "center", "maxLines": 2, "padding": "0,6,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Skin", "style": { "width": "72", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 24, "color": "theme.primary" } },
+          { "type": "text", "text": "Skin", "style": { "color": "theme.textSecondary", "fontSize": 11, "textAlign": "center", "maxLines": 2, "padding": "0,6,0,0" } }
+        ]},
+        { "type": "column", "action": "nav:doctors:Lungs", "style": { "width": "72", "crossAlign": "center" }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 24, "color": "theme.primary" } },
+          { "type": "text", "text": "Lungs", "style": { "color": "theme.textSecondary", "fontSize": 11, "textAlign": "center", "maxLines": 2, "padding": "0,6,0,0" } }
+        ]}
+      ]
+    },
+
+    { "type": "text", "text": "Daily Health Tip", "style": { "color": "theme.textSecondary", "fontSize": 12, "fontWeight": "bold", "padding": "0,24,0,8" } },
+    {
+      "type": "row",
+      "style": { "width": "fill", "background": "theme.surface", "cornerRadius": 20, "borderWidth": 1, "borderColor": "theme.border", "padding": "18", "crossAlign": "center" },
+      "children": [
+        { "type": "box", "style": { "width": "44", "height": "44", "background": "theme.iconBg", "cornerRadius": 14 }, "children": [
+          { "type": "icon", "icon": "ABOUT", "style": { "size": 22, "color": "theme.primary", "boxAlign": "center" } }
+        ]},
+        {
+          "type": "column",
+          "style": { "padding": "14,0,0,0" },
+          "children": [
+            { "type": "text", "text": "Stay Hydrated!", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 15 } },
+            { "type": "text", "text": "Drink at least 8 glasses of water daily.", "style": { "color": "theme.textSecondary", "fontSize": 12 } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "text",
+      "text": "Designed for your health\nMy Medecine v3.0",
+      "style": { "width": "fill", "padding": "0,40", "textAlign": "center", "color": "theme.textSecondary", "fontSize": 12, "opacity": 0.6 }
+    }
   ]
 }
