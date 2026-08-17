@@ -3,7 +3,7 @@
   "backgroundColor": "#0B0F14",
   "refreshIntervalSeconds": 120,
   "theme": {
-    "primary": "#10B981",
+    "primary": "#FF9933",
     "background": "#0B0F14",
     "surface": "#151B23",
     "border": "#232B35",
@@ -11,15 +11,65 @@
     "textSecondary": "#9CA3AF",
     "richRed": "#991B1B",
     "yellow": "#F5C542",
-    "iconBg": "#0F2E28"
+    "iconBg": "#26FF9933"
   },
   "sections": [
+
+    {
+      "type": "box",
+      "style": { "width": "fill", "height": "66", "cornerRadius": 16 },
+      "children": [
+        {
+          "type": "column",
+          "style": { "width": "fill" },
+          "children": [
+            { "type": "box", "style": { "width": "fill", "height": "22", "background": "#FF9933" } },
+            { "type": "box", "style": { "width": "fill", "height": "22", "background": "#FFFFFF" } },
+            { "type": "box", "style": { "width": "fill", "height": "22", "background": "#138808" } }
+          ]
+        },
+        { "type": "box", "style": { "width": "18", "height": "18", "borderWidth": 2, "borderColor": "#000080", "cornerRadius": 9, "boxAlign": "center" } }
+      ]
+    },
+
+    {
+      "type": "box",
+      "style": { "width": "fill", "cornerRadius": 24, "gradientFrom": "#FF9933", "gradientTo": "#138808", "padding": "0,16,0,0" },
+      "children": [
+        {
+          "type": "column",
+          "style": { "padding": "28,24", "crossAlign": "center", "width": "fill" },
+          "children": [
+            { "type": "text", "text": "Happy Independence Day!", "style": { "color": "#FFFFFF", "fontSize": 22, "fontWeight": "black", "textAlign": "center" } },
+            { "type": "text", "text": "Celebrating 79 years of freedom 🇮🇳", "style": { "color": "#FFFFFF", "fontSize": 13, "textAlign": "center", "padding": "6,0,0,0" } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "row",
+      "action": "nav:health_hub",
+      "style": { "width": "fill", "background": "#FFFFFF", "cornerRadius": 16, "borderWidth": 2, "borderColor": "#FF9933", "padding": "16", "crossAlign": "center", "align": "spaceBetween", "gap": 12 },
+      "children": [
+        {
+          "type": "column",
+          "style": { "width": "fill" },
+          "children": [
+            { "type": "text", "text": "Independence Day Special", "style": { "color": "#138808", "fontWeight": "bold", "fontSize": 14 } },
+            { "type": "text", "text": "Flat 15% off health checkups \u2022 Code AZADI15", "style": { "color": "#374151", "fontSize": 12, "padding": "2,0,0,0" } }
+          ]
+        },
+        { "type": "text", "text": "Book \u2192", "style": { "color": "#FF9933", "fontWeight": "bold", "fontSize": 13 } }
+      ]
+    },
+
     {
       "type": "column",
-      "style": { "padding": "0,16" },
+      "style": { "padding": "8,16,0,16" },
       "children": [
         { "type": "text", "text": "Welcome,", "style": { "fontSize": 14, "color": "theme.textSecondary" } },
-        { "type": "text", "text": "{{userName}}", "style": { "fontSize": 28, "fontWeight": "black", "color": "theme.textPrimary" } }
+        { "type": "text", "text": "{{userName}} 🇮🇳", "style": { "fontSize": 28, "fontWeight": "black", "color": "theme.textPrimary" } }
       ]
     },
 
@@ -61,8 +111,8 @@
                   "type": "column",
                   "style": { "padding": "16", "align": "center", "crossAlign": "center", "boxAlign": "center" },
                   "children": [
-                    { "type": "box", "style": { "width": "52", "height": "56", "background": "#1A10B981", "cornerRadius": 18 }, "children": [
-                      { "type": "icon", "icon": "AI", "style": { "size": 28, "color": "theme.primary", "boxAlign": "center" } }
+                    { "type": "box", "style": { "width": "52", "height": "56", "background": "#1A138808", "cornerRadius": 18 }, "children": [
+                      { "type": "icon", "icon": "AI", "style": { "size": 28, "color": "#138808", "boxAlign": "center" } }
                     ]},
                     { "type": "text", "text": "AI med Assistant", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "padding": "0,12,0,0" } },
                     { "type": "text", "text": "Analyze symptoms with Gemini AI", "style": { "color": "theme.textSecondary", "fontSize": 10 } }
@@ -106,7 +156,7 @@
               "style": { "width": "fill", "height": "140", "background": "theme.surface", "cornerRadius": 24, "borderWidth": 1, "borderColor": "theme.border", "padding": "16", "align": "center", "crossAlign": "center" },
               "children": [
                 { "type": "box", "style": { "width": "52", "height": "56", "background": "theme.iconBg", "cornerRadius": 18 }, "children": [
-                  { "type": "icon", "icon": "CALENDAR", "style": { "size": 24, "color": "theme.yellow", "boxAlign": "center" } }
+                  { "type": "icon", "icon": "CALENDAR", "style": { "size": 24, "color": "theme.primary", "boxAlign": "center" } }
                 ]},
                 { "type": "text", "text": "Health Hub", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 14, "padding": "0,12,0,0" } }
               ]
@@ -205,8 +255,8 @@
           "type": "column",
           "style": { "padding": "14,0,0,0" },
           "children": [
-            { "type": "text", "text": "Stay Hydrated!", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 15 } },
-            { "type": "text", "text": "Drink at least 8 glasses of water daily.", "style": { "color": "theme.textSecondary", "fontSize": 12 } }
+            { "type": "text", "text": "Freedom Begins With Good Health", "style": { "color": "theme.textPrimary", "fontWeight": "bold", "fontSize": 15 } },
+            { "type": "text", "text": "Stay hydrated \u2014 drink at least 8 glasses of water daily.", "style": { "color": "theme.textSecondary", "fontSize": 12 } }
           ]
         }
       ]
@@ -214,8 +264,8 @@
 
     {
       "type": "text",
-      "text": "Designed for your health\nMy Medecine v3.0",
-      "style": { "width": "fill", "padding": "0,40", "textAlign": "center", "color": "theme.textSecondary", "fontSize": 12, "opacity": 0.6 }
+      "text": "🇮🇳 Jai Hind \u2014 Happy 79th Independence Day\nDesigned for your health \u2022 My Medecine v3.0",
+      "style": { "width": "fill", "padding": "0,40", "textAlign": "center", "color": "theme.textSecondary", "fontSize": 12, "opacity": 0.7 }
     }
   ]
 }
