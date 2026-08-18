@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>My Medecine</title>
+<style>
+  :root {
+    --color-primary: #10B981;
+    --color-bg: #0B0F14;
+    --color-surface: #151B23;
+    --color-border: #232B35;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #9CA3AF;
+    --color-rich-red: #991B1B;
+    --color-yellow: #F5C542;
+    --color-icon-bg: #0F2E28;
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: -apple-system, Roboto, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    padding: 16px 20px 32px 20px;
+  }
+
+  .clickable { cursor: pointer; }
+  .clickable:active { opacity: 0.75; }
+
+  /* ---------- Welcome ---------- */
+  .welcome-label { font-size: 14px; color: var(--color-text-secondary); margin: 0; }
+  .welcome-name { font-size: 28px; font-weight: 800; color: var(--color-text-primary); margin: 2px 0 24px 0; }
+
+  /* ---------- Search bar ---------- */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 14px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  }
+  .search-bar svg { flex-shrink: 0; }
+  .search-bar span { color: var(--color-text-secondary); font-size: 15px; margin-left: 16px; }
+
+  /* ---------- Category grid (real CSS Grid - always aligned) ---------- */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .tile {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+  }
+  .tile-icon-box {
+    width: 52px; height: 56px;
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--color-icon-bg);
+  }
+  .tile-icon-box.round-20 { border-radius: 20px; }
+  .tile-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-top: 14px; }
+  .tile-title.bold { font-weight: 700; margin-top: 12px; }
+  .tile-desc { font-size: 10px; color: var(--color-text-secondary); margin-top: 2px; }
+
+  .tile-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    border-radius: 8px;
+    padding: 2px 6px;
+    font-size: 8px;
+    font-weight: 800;
+  }
+  .tile-badge.beta { background: var(--color-yellow); color: #000; }
+  .tile-badge.new { background: var(--color-rich-red); color: #fff; }
+
+  /* ---------- SOS banner ---------- */
+  .sos-banner {
+    margin-top: 28px;
+    border-radius: 24px;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--color-rich-red), #450A0A);
+    box-shadow: 0 6px 16px rgba(153,27,27,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .sos-title { font-size: 20px; font-weight: 700; color: #fff; margin: 0; }
+  .sos-sub { font-size: 13px; color: #FECACA; margin: 4px 0 0 0; }
+  .sos-btn {
+    background: #fff; color: var(--color-rich-red);
+    border-radius: 16px; padding: 10px 18px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  /* ---------- Section headers ---------- */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0 16px 0;
+  }
+  .section-title { font-size: 12px; font-weight: 700; color: var(--color-text-secondary); }
+  .section-view-all { font-size: 12px; font-weight: 700; color: var(--color-primary); }
+
+  /* ---------- Article card ---------- */
+  .article-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  }
+  .article-image-frame { position: relative; height: 180px; background: #1c232d; }
+  .article-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .latest-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--color-primary); color: #fff;
+    font-size: 9px; font-weight: 800; letter-spacing: 0.3px;
+    padding: 5px 12px; border-radius: 10px;
+  }
+  .article-body { padding: 16px 20px 20px 20px; }
+  .article-title { font-size: 17px; font-weight: 800; color: var(--color-text-primary); }
+  .article-meta { font-size: 11px; color: var(--color-text-secondary); margin: 8px 0 16px 0; }
+  .read-more-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--color-icon-bg); border: 1px solid var(--color-border);
+    border-radius: 14px; padding: 8px 16px;
+    font-size: 12px; font-weight: 700; color: var(--color-primary);
+  }
+
+  /* ---------- Appointment card ---------- */
+  .empty-card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: 24px; padding: 28px 24px; text-align: center;
+    font-size: 15px; font-weight: 500; color: var(--color-text-secondary);
+  }
+  .appointment-card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: 24px; padding: 20px; margin-bottom: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  }
+  .appt-top { display: flex; align-items: center; gap: 16px; }
+  .appt-avatar {
+    width: 52px; height: 52px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+    background: var(--color-icon-bg); display: flex; align-items: center; justify-content: center;
+  }
+  .appt-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .appt-info { flex: 1; min-width: 0; }
+  .appt-doc { font-size: 16px; font-weight: 700; color: var(--color-text-primary); }
+  .appt-spec { font-size: 13px; color: var(--color-text-secondary); }
+  .appt-badge {
+    font-size: 9px; font-weight: 800; letter-spacing: 0.3px;
+    padding: 5px 12px; border-radius: 10px; white-space: nowrap;
+  }
+  .badge-green { background: rgba(16,185,129,0.15); color: #10B981; }
+  .badge-red { background: rgba(153,27,27,0.15); color: #F87171; }
+  .badge-yellow { background: rgba(245,197,66,0.15); color: var(--color-yellow); }
+  .appt-reason {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(153,27,27,0.08); color: var(--color-rich-red);
+    border-radius: 12px; padding: 8px 12px; margin-top: 16px;
+    font-size: 11px; font-weight: 500;
+  }
+  .appt-divider { height: 1px; background: var(--color-border); margin: 16px 0; }
+  .appt-bottom { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--color-text-secondary); }
+  .appt-seat { color: var(--color-primary); font-weight: 700; font-size: 13px; }
+
+  /* ---------- Upcoming medicine (static) ---------- */
+  .medicine-card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: 24px; padding: 20px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  .medicine-title { flex: 1; font-size: 16px; font-weight: 700; color: var(--color-text-primary); }
+
+  /* ---------- Banner slider (real CSS scroll-snap carousel) ---------- */
+  .banner-scroller {
+    display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; padding-bottom: 4px;
+  }
+  .banner-scroller::-webkit-scrollbar { display: none; }
+  .banner-card {
+    flex: 0 0 82%; scroll-snap-align: start;
+    border-radius: 20px; overflow: hidden; height: 150px;
+    background: var(--color-surface); border: 1px solid var(--color-border);
+  }
+  .banner-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- Specialty scroller ---------- */
+  .specialty-scroller {
+    display: flex; gap: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  .specialty-scroller::-webkit-scrollbar { display: none; }
+  .specialty-card {
+    flex: 0 0 110px; height: 145px;
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: 26px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 8px 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  .specialty-name { font-size: 13px; font-weight: 700; color: var(--color-text-primary); margin-top: 12px; text-align: center; }
+
+  /* ---------- Health tip ---------- */
+  .health-tip {
+    display: flex; align-items: center; gap: 20px;
+    background: #1B222C; border: 1px solid var(--color-border);
+    border-radius: 24px; padding: 24px;
+  }
+  .health-tip-title { font-size: 16px; font-weight: 700; color: var(--color-text-primary); }
+  .health-tip-desc { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    text-align: center; font-size: 12px; color: var(--color-text-secondary);
+    opacity: 0.7; padding: 64px 0 24px 0; white-space: pre-line;
+  }
+</style>
+</head>
+<body>
+
+  <p class="welcome-label">Welcome,</p>
+  <h1 class="welcome-name" id="user-name">User</h1>
+
+  <div class="search-bar clickable" onclick="nav('health_hub')">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Search medicines, doctors...</span>
+  </div>
+
+  <div class="category-grid">
+    <div class="tile clickable" onclick="nav('doctors')">
+      <div class="tile-icon-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div class="tile-title">Find Doctor</div>
+    </div>
+
+    <div class="tile clickable" onclick="nav('ai')" style="position:relative;">
+      <div class="tile-icon-box round-20" style="background:rgba(16,185,129,0.1);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z"/></svg>
+      </div>
+      <div class="tile-title bold">AI med Assistant</div>
+      <div class="tile-desc">Analyze symptoms with Gemini AI</div>
+      <div class="tile-badge beta">BETA</div>
+    </div>
+
+    <div class="tile clickable" onclick="nav('chat')" style="position:relative;">
+      <div class="tile-icon-box round-20" style="background:rgba(167,139,250,0.1);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+      </div>
+      <div class="tile-title bold">My Medmates</div>
+      <div class="tile-desc">Connect with others</div>
+      <div class="tile-badge new">NEW</div>
+    </div>
+
+    <div class="tile clickable" onclick="nav('health_hub')">
+      <div class="tile-icon-box">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5C542" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="tile-title">Health Hub</div>
+    </div>
+  </div>
+
+  <div class="sos-banner">
+    <div>
+      <p class="sos-title">EMERGENCY</p>
+      <p class="sos-sub">Call 112 for immediate help</p>
+    </div>
+    <div class="sos-btn clickable" onclick="tel('112')">CALL NOW</div>
+  </div>
+
+  <div class="section-header clickable" onclick="nav('health_hub')">
+    <span class="section-title">Health Articles</span>
+    <span class="section-view-all">VIEW ALL</span>
+  </div>
+  <div id="native-articles"></div>
+
+  <div class="section-header clickable" onclick="nav('appointments')">
+    <span class="section-title">Upcoming Appointments</span>
+    <span class="section-view-all">VIEW ALL</span>
+  </div>
+  <div id="native-appointments"><div class="empty-card">No upcoming appointments</div></div>
+
+  <div class="section-header"><span class="section-title">Upcoming Medicine</span></div>
+  <div class="medicine-card clickable" onclick="nav('health_hub')">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    <span class="medicine-title">Track your daily medicines</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#9CA3AF"><polygon points="6 4 20 12 6 20"/></svg>
+  </div>
+
+  <div class="section-header"><span class="section-title">Special Offers</span></div>
+  <div class="banner-scroller" id="native-banners"></div>
+
+  <div class="section-header clickable" onclick="nav('doctors:All')">
+    <span class="section-title">Popular Specialties</span>
+    <span class="section-view-all">VIEW ALL</span>
+  </div>
+  <div class="specialty-scroller" id="specialty-scroller">
+    <!-- populated by JS below - see SPECIALTIES array -->
+  </div>
+
+  <div class="section-header"><span class="section-title">Daily Health Tip</span></div>
+  <div class="health-tip">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <div>
+      <div class="health-tip-title">Stay Hydrated!</div>
+      <div class="health-tip-desc">Drink at least 8 glasses of water daily.</div>
+    </div>
+  </div>
+
+  <div class="footer">Designed for your health
+My Medecine v3.0</div>
+
+<script>
+  // ---------------------------------------------------------------------
+  // BRIDGE TO NATIVE (Kotlin exposes window.AndroidBridge via
+  // addJavascriptInterface in homepage.kt)
+  // ---------------------------------------------------------------------
+  function nav(target) { if (window.AndroidBridge) AndroidBridge.nav(target); }
+  function tel(number) { if (window.AndroidBridge) AndroidBridge.tel(number); }
+  function openUrl(u) { if (window.AndroidBridge) AndroidBridge.openUrl(u); }
+  function openArticle(id) { if (window.AndroidBridge) AndroidBridge.openArticle(id); }
+  function openAppointment(id) { if (window.AndroidBridge) AndroidBridge.openAppointment(id); }
+
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // ---------------------------------------------------------------------
+  // Called by Kotlin (webView.evaluateJavascript) whenever Firestore data
+  // changes. This is the ONLY place real user data ever gets rendered -
+  // the server-driven HTML above only controls layout/copy/theme, never
+  // the person's own articles/appointments/offers.
+  // ---------------------------------------------------------------------
+
+  function setUserName(name) {
+    document.getElementById('user-name').textContent = name || 'User';
+  }
+
+  function renderArticles(list) {
+    const el = document.getElementById('native-articles');
+    el.innerHTML = '';
+    (list || []).forEach(a => {
+      const card = document.createElement('div');
+      card.className = 'article-card clickable';
+      card.onclick = () => openArticle(a.id);
+      card.innerHTML = `
+        <div class="article-image-frame">
+          <img class="article-image" src="${escapeHtml(a.imageUrl)}" onerror="this.style.opacity=0">
+          <div class="latest-badge">LATEST ARTICLE</div>
+        </div>
+        <div class="article-body">
+          <div class="article-title">${escapeHtml(a.title)}</div>
+          <div class="article-meta">${escapeHtml(a.date)} &bull; ${escapeHtml(a.views)} views</div>
+          <div class="read-more-btn">Read Full Article &#9654;</div>
+        </div>`;
+      el.appendChild(card);
+    });
+  }
+
+  function renderAppointments(list) {
+    const el = document.getElementById('native-appointments');
+    el.innerHTML = '';
+    if (!list || list.length === 0) {
+      el.innerHTML = '<div class="empty-card">No upcoming appointments</div>';
+      return;
+    }
+    list.forEach(a => {
+      const badgeClass = (a.status === 'Approved' || a.status === 'Confirmed') ? 'badge-green'
+        : (a.status === 'Rejected' ? 'badge-red' : 'badge-yellow');
+      const showSeat = (a.status === 'Approved' || a.status === 'Confirmed');
+      const showReason = a.status === 'Rejected' && a.reason;
+      const card = document.createElement('div');
+      card.className = 'appointment-card clickable';
+      card.onclick = () => openAppointment(a.id);
+      card.innerHTML = `
+        <div class="appt-top">
+          <div class="appt-avatar">${a.doctorPic ? `<img src="${escapeHtml(a.doctorPic)}">` : ''}</div>
+          <div class="appt-info">
+            <div class="appt-doc">Dr. ${escapeHtml(a.doctorName)}</div>
+            <div class="appt-spec">${escapeHtml(a.specialty)}</div>
+          </div>
+          <div class="appt-badge ${badgeClass}">${escapeHtml((a.status || '').toUpperCase())}</div>
+        </div>
+        ${showReason ? `<div class="appt-reason">Reason: ${escapeHtml(a.reason)}</div>` : ''}
+        <div class="appt-divider"></div>
+        <div class="appt-bottom">
+          <span>${escapeHtml(a.date)} | ${escapeHtml(a.time)}</span>
+          ${showSeat ? `<span class="appt-seat">Seat: ${escapeHtml(a.seat)}</span>` : ''}
+        </div>`;
+      el.appendChild(card);
+    });
+  }
+
+  function renderBanners(list) {
+    const el = document.getElementById('native-banners');
+    el.innerHTML = '';
+    (list || []).forEach(b => {
+      const card = document.createElement('div');
+      card.className = 'banner-card' + (b.actionUrl ? ' clickable' : '');
+      if (b.actionUrl) card.onclick = () => openUrl(b.actionUrl);
+      card.innerHTML = `<img src="${escapeHtml(b.imageUrl)}" onerror="this.style.opacity=0">`;
+      el.appendChild(card);
+    });
+  }
+
+  // Specialties are static copy (not per-user data) so they render immediately
+  // without waiting on a native bridge call.
+  const SPECIALTIES = [
+    ['Gastric', 'Gastric'], ['Ortho', 'Orthopedics'], ['Dentist', 'Dentist'],
+    ['Heart', 'Heart'], ['Eyes', 'Eyes'], ['Skin', 'Skin'], ['Lungs', 'Lungs']
+  ];
+  (function renderSpecialties() {
+    const el = document.getElementById('specialty-scroller');
+    SPECIALTIES.forEach(([label, type]) => {
+      const card = document.createElement('div');
+      card.className = 'specialty-card clickable';
+      card.onclick = () => nav('doctors:' + type);
+      card.innerHTML = `
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <div class="specialty-name">${escapeHtml(label)}</div>`;
+      el.appendChild(card);
+    });
+  })();
+</script>
+</body>
+</html>
