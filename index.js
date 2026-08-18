@@ -11,12 +11,10 @@ const PORT = process.env.PORT || 3000;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = process.env.REPO_OWNER || 'mymedicineofficial';
 const REPO_NAME = process.env.REPO_NAME || 'mymedicine-application-ui';
-const FILE_PATH = process.env.FILE_PATH || 'homepage.json';
+const FILE_PATH = process.env.FILE_PATH || 'homepage.html';
 const BRANCH = process.env.BRANCH || 'main';
 
 // How long we trust our copy of GitHub's file before checking again (seconds).
-// Keeps requests fast (no GitHub round-trip most of the time) and keeps us
-// well under GitHub's API rate limit.
 const CACHE_TTL_MS = Number(process.env.CACHE_TTL_SECONDS || 60) * 1000;
 
 app.use(cors());
@@ -24,8 +22,8 @@ app.use(compression());
 
 // --- In-memory cache ---------------------------------------------------
 let cache = {
-    json: null,       // parsed layout (last known-good)
-    etag: null,       // hash of the raw content, used for If-None-Match / 304s
+    html: null,       // raw HTML string (last known-good)
+    etag: null,
     fetchedAt: 0
 };
 
@@ -45,59 +43,52 @@ async function fetchFromGitHub() {
         },
         timeout: 10000
     });
-    // Because of the "raw" Accept header, response.data is already the file's
-    // raw text content (the JSON string as it sits in the repo).
     return typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
 }
 
 /**
- * Returns { json, etag, fetchedAt }. Serves from cache when fresh.
+ * Returns { html, etag, fetchedAt }. Serves from cache when fresh.
  * If GitHub fails and we DO have an old cached copy, we serve that instead
- * of failing the whole Home screen - a flaky GitHub call should never mean
- * a blank/broken app for users.
+ * of failing the whole Home screen.
  */
-async function getLayout({ forceRefresh = false } = {}) {
+async function getPage({ forceRefresh = false } = {}) {
     const isStale = Date.now() - cache.fetchedAt > CACHE_TTL_MS;
-    if (!forceRefresh && cache.json && !isStale) {
+    if (!forceRefresh && cache.html && !isStale) {
         return cache;
     }
 
     try {
-        const raw = await fetchFromGitHub();
-        const parsed = JSON.parse(raw); // throws if the repo file isn't valid JSON
-
-        cache = { json: parsed, etag: computeEtag(raw), fetchedAt: Date.now() };
+        const html = await fetchFromGitHub();
+        cache = { html, etag: computeEtag(html), fetchedAt: Date.now() };
         return cache;
     } catch (error) {
-        console.error('[home-layout] GitHub fetch failed:', error.message);
-        if (cache.json) {
-            console.warn('[home-layout] Serving last known-good cached layout instead.');
+        console.error('[home-page] GitHub fetch failed:', error.message);
+        if (cache.html) {
+            console.warn('[home-page] Serving last known-good cached page instead.');
             return cache;
         }
         throw error;
     }
 }
 
-app.get('/api/home-layout', async (req, res) => {
+app.get('/api/home-page', async (req, res) => {
     try {
         const forceRefresh = req.query.refresh === '1';
-        const layout = await getLayout({ forceRefresh });
+        const page = await getPage({ forceRefresh });
 
-        // App-style caching: if the client already has this exact version
-        // (matching ETag), tell it to keep using its local copy - saves data
-        // and makes the "refreshIntervalSeconds" polling essentially free.
-        if (req.headers['if-none-match'] === layout.etag) {
+        if (req.headers['if-none-match'] === page.etag) {
             return res.status(304).end();
         }
 
-        res.set('ETag', layout.etag);
+        res.set('ETag', page.etag);
+        res.set('Content-Type', 'text/html; charset=utf-8');
         res.set('Cache-Control', `public, max-age=${Math.floor(CACHE_TTL_MS / 1000)}`);
-        res.json(layout.json);
+        res.send(page.html);
     } catch (error) {
-        res.status(502).json({
-            error: 'home_layout_unavailable',
-            message: 'Could not load Home layout right now. Please try again shortly.'
-        });
+        res.status(502).send(
+            '<html><body style="background:#0B0F14;color:#fff;font-family:sans-serif;padding:40px;text-align:center;">' +
+            '<h2>Could not load Home page</h2><p>Please try again shortly.</p></body></html>'
+        );
     }
 });
 
